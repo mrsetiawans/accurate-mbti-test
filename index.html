@@ -13,20 +13,21 @@
         body {
             font-family: 'Inter', sans-serif;
             /* Tambahkan background gradient yang lebih dinamis dan modern */
-            background: linear-gradient(to right bottom, #f0f4f8, #e0e8f0, #d0dbe6, #c0cee0, #b0c2da);
+            background: linear-gradient(to right bottom, #e0f2fe, #bfdbfe, #93c5fd, #60a5fa, #3b82f6); /* Warna biru muda yang cerah dan profesional */
             min-height: 100vh; /* Pastikan background mengisi seluruh viewport */
             display: flex; /* Gunakan flexbox untuk centering konten */
             align-items: center; /* Vertikal center */
             justify-content: center; /* Horizontal center */
             padding: 1.5rem; /* Tambahkan padding agar konten tidak terlalu mepet ke tepi layar */
+            color: #374151; /* Warna teks default agar lebih gelap dan terbaca */
         }
         /* Keyframe animation untuk efek memantul pada hasil tipe MBTI */
         .animate-bounce-custom {
-            animation: bounce 1.5s infinite; /* Durasi lebih lama, lebih halus */
+            animation: bounce 1.8s infinite cubic-bezier(0.68, -0.55, 0.265, 1.55); /* Durasi lebih lama, efek lebih halus dan dinamis */
         }
         @keyframes bounce {
             0%, 100% {
-                transform: translateY(-8%); /* Jarak pantul sedikit lebih jauh */
+                transform: translateY(-10%); /* Jarak pantul sedikit lebih jauh */
                 animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
             }
             50% {
@@ -47,18 +48,18 @@
         }
         /* Efek hover yang lebih atraktif untuk tombol utama */
         .btn-primary {
-            background: linear-gradient(to right, #4a75ee, #6a90f0); /* Gradien warna yang lebih hidup */
+            background: linear-gradient(to right, #2563eb, #3b82f6); /* Gradien warna biru yang kuat */
             border: none;
             transition: all 0.3s ease-in-out; /* Transisi yang lebih halus */
         }
         .btn-primary:hover {
-            transform: translateY(-5px); /* Sedikit lebih naik */
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Bayangan lebih dalam */
-            background: linear-gradient(to right, #3b60d8, #5a7edc); /* Gradien lebih gelap saat hover */
+            transform: translateY(-3px); /* Sedikit lebih naik */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); /* Bayangan lebih dalam */
+            background: linear-gradient(to right, #1d4ed8, #2563eb); /* Gradien lebih gelap saat hover */
         }
         .btn-primary:active {
-            transform: translateY(-2px); /* Sedikit menekan saat klik */
-            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+            transform: translateY(-1px); /* Sedikit menekan saat klik */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         /* Styling untuk tombol opsi jawaban agar lebih modern dan interaktif */
@@ -66,45 +67,91 @@
             transition: all 0.25s ease-in-out;
             background-color: #ffffff; /* Latar belakang putih bersih */
             border: 1px solid #e2e8f0; /* Border abu-abu terang */
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Bayangan lembut */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.07); /* Bayangan lembut yang lebih terasa */
             text-align: left; /* Teks rata kiri */
+            color: #4a5568; /* Warna teks yang lebih gelap */
+            position: relative; /* Untuk ikon */
+            overflow: hidden; /* Pastikan tidak ada overflow dari efek hover */
+        }
+        .option-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, transparent, rgba(96, 165, 250, 0.2), transparent);
+            transition: all 0.4s ease-in-out;
+            z-index: 0;
+        }
+        .option-button:hover::before {
+            left: 100%;
         }
         .option-button:hover {
             background-color: #eff6ff; /* Biru sangat muda saat hover */
-            border-color: #93c5fd; /* Biru terang untuk border */
-            transform: translateY(-3px); /* Efek angkat yang lebih terasa */
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1); /* Bayangan lebih kuat saat hover */
+            border-color: #60a5fa; /* Biru terang untuk border */
+            transform: translateY(-4px); /* Efek angkat yang lebih terasa */
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12); /* Bayangan lebih kuat saat hover */
             color: #2563eb; /* Warna teks biru tua */
         }
         .option-button:active {
-            transform: translateY(-1px); /* Sedikit menekan saat klik */
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+            transform: translateY(-2px); /* Sedikit menekan saat klik */
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
             background-color: #dbeafe; /* Biru lebih gelap saat aktif */
         }
+        .option-button span {
+            position: relative; /* Agar teks di atas pseudo-element */
+            z-index: 1;
+        }
+
         /* Styling untuk teks deskripsi hasil agar lebih rapi */
         .description-content strong {
             display: block; /* Membuat judul sub-bagian menjadi block level */
-            margin-top: 1.5rem; /* Spasi di atas judul sub-bagian */
-            margin-bottom: 0.75rem; /* Spasi di bawah judul sub-bagian */
-            font-size: 1.25rem; /* Ukuran font lebih besar untuk sub-judul */
-            color: #2d3748; /* Warna teks yang lebih gelap */
+            margin-top: 2rem; /* Spasi di atas judul sub-bagian */
+            margin-bottom: 0.8rem; /* Spasi di bawah judul sub-bagian */
+            font-size: 1.5rem; /* Ukuran font lebih besar untuk sub-judul */
+            color: #1f2937; /* Warna teks yang lebih gelap */
             position: relative; /* Untuk underline */
-            padding-bottom: 0.5rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 2px solid #a8dadc; /* Underline yang lebih menarik */
+            font-weight: 700; /* Lebih tebal */
         }
         .description-content strong::after {
             content: '';
             position: absolute;
             left: 0;
-            bottom: 0;
-            width: 50px; /* Lebar underline */
-            height: 3px;
-            background-color: #63b3ed; /* Warna underline */
+            bottom: -2px; /* Menyesuaikan posisi di bawah border */
+            width: 70px; /* Lebar underline yang lebih panjang */
+            height: 4px; /* Ketebalan underline */
+            background-color: #3b82f6; /* Warna underline yang serasi dengan tema */
             border-radius: 2px;
+            z-index: 2; /* Pastikan di atas border-bottom */
         }
         .description-content {
-            line-height: 1.8; /* Meningkatkan jarak antar baris untuk keterbacaan yang optimal */
+            line-height: 1.9; /* Meningkatkan jarak antar baris untuk keterbacaan yang optimal */
             text-align: justify; /* Ratakan teks agar terlihat lebih rapi */
             color: #4a5568; /* Warna teks yang sedikit lebih gelap */
+            font-size: 1.1rem; /* Ukuran font sedikit lebih besar */
+        }
+
+        /* Styling untuk container hasil preferensi */
+        .preference-summary {
+            border-left: 5px solid #2563eb; /* Garis biru di samping */
+            padding-left: 1.5rem;
+        }
+        .preference-summary li {
+            margin-bottom: 0.75rem;
+        }
+        .preference-summary strong {
+            font-weight: 600;
+        }
+        .preference-summary span {
+            font-weight: 700;
+            color: #1e40af; /* Biru yang lebih tua */
+        }
+        .preference-summary em {
+            color: #6b7280;
+            font-size: 0.9rem;
         }
 
         /* Responsive adjustments */
@@ -114,6 +161,39 @@
             }
             .text-5xl {
                 font-size: 3.5rem; /* Menyesuaikan ukuran font untuk mobile */
+            }
+            .text-7xl {
+                font-size: 4.5rem; /* Menyesuaikan ukuran font untuk mobile hasil */
+            }
+            .text-3xl {
+                font-size: 2rem;
+            }
+            .text-4xl {
+                font-size: 2.5rem;
+            }
+            .option-button {
+                padding: 0.8rem 1.25rem;
+                font-size: 1rem;
+            }
+            .description-content strong {
+                font-size: 1.3rem;
+                margin-top: 1.5rem;
+                padding-bottom: 0.5rem;
+            }
+            .description-content {
+                font-size: 1rem;
+                line-height: 1.7;
+            }
+        }
+        @media (max-width: 640px) {
+            .text-7xl {
+                font-size: 3.5rem;
+            }
+            .text-4xl {
+                font-size: 2rem;
+            }
+            .text-2xl {
+                font-size: 1.5rem;
             }
         }
     </style>
@@ -136,8 +216,9 @@
         let mbtiTypeResult = '';
         let currentQuestionIndex = 0;
         let shuffledQuestions = [];
+        let userName = ''; // Variabel untuk menyimpan nama pengguna
 
-        // Daftar pertanyaan yang komprehensif untuk setiap dikotomi (20 pertanyaan per dikotomi)
+        // Daftar pertanyaan yang komprehensif untuk setiap dikotomi (40 pertanyaan per dikotomi)
         const allQuestions = [
             // Extraversion vs. Introversion (E/I) - positive score leans E, negative leans I
             { id: 'ei1', text: 'Saya merasa bersemangat dan energik setelah menghabiskan waktu di keramaian sosial atau pesta.', dichotomy: 'EI' },
@@ -352,7 +433,7 @@
 
         // Opsi untuk skala 3 poin, dengan skor yang sesuai (bobot lebih tinggi)
         const likertOptions = [
-            { text: 'Setuju', score: 2 },           // Increased score
+            { text: 'Setuju', score: 2 },        // Increased score
             { text: 'Netral', score: 0 },
             { text: 'Tidak Setuju', score: -2 },    // Increased score (negative)
         ];
@@ -361,307 +442,467 @@
         const mbtiDescriptions = {
             // ---- ISTJ Variants ----
             ISTJ_A: {
-                name: 'The Assertive Logistician',
-                description: `<strong>Gambaran Umum:</strong> ISTJ-A adalah individu yang sangat bertanggung jawab, praktis, dan logis dengan rasa percaya diri yang kuat. Mereka menghargai ketertiban, struktur, dan keandalan. Mereka fokus pada fakta dan detail, serta membuat keputusan berdasarkan logika dan pengalaman yang terbukti, tanpa banyak terpengaruh oleh keraguan diri.
-                <strong>Kekuatan:</strong> Sangat andal, fokus pada detail, memiliki integritas tinggi, tenang di bawah tekanan, dan sangat efisien. Mereka mengambil tanggung jawab dengan serius dan menyelesaikan tugas dengan teliti.
-                <strong>Area Pengembangan:</strong> Cenderung kaku, mungkin kurang fleksibel terhadap perubahan, dan bisa terlalu kritis terhadap diri sendiri atau orang lain jika standar tidak terpenuhi. Sulit menerima kritik.
-                <strong>Interaksi Sosial:</strong> Cenderung pendiam namun lugas. Mereka berbicara ketika ada sesuatu yang penting untuk dikatakan dan menghargai kejujuran. Mereka lebih suka lingkaran pertemanan yang kecil dan setia.
-                <strong>Gaya Kerja:</strong> Pekerja keras yang sistematis dan metodis. Mereka unggul dalam lingkungan yang terstruktur, di mana aturan dan prosedur jelas. Sangat baik dalam mengelola proyek dan menjaga ketertiban.
-                <strong>Kehidupan Pribadi:</strong> Konsisten, dapat diandalkan, dan setia. Mereka memprioritaskan kewajiban dan tanggung jawab, menemukan kenyamanan dalam rutinitas dan keteraturan. Tidak mudah goyah oleh emosi.`,
+                name: 'Ahli Logistik yang Tegas',
+                description: `Halo [NamaPengguna], selamat! Kamu adalah seorang ISTJ-A, sang Ahli Logistik yang Tegas. Ini berarti kamu adalah individu yang sangat bertanggung jawab, praktis, dan logis, dengan rasa percaya diri yang kuat. Kamu menghargai ketertiban, struktur, dan keandalan di atas segalanya. Kamu punya fokus yang tajam pada fakta dan detail, serta membuat keputusan berdasarkan logika dan pengalaman yang sudah terbukti, tanpa banyak terpengaruh keraguan diri dari dalam maupun pandangan orang lain. Kamu tipe yang bisa diandalkan, kan?
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat andal, fokus pada detail sekecil apa pun, punya integritas yang tinggi, dan tetap tenang meskipun di bawah tekanan. Efisiensimu luar biasa, dan kamu selalu menyelesaikan tugas dengan sangat teliti. Kamu memang pilar yang kokoh!
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Terkadang kamu mungkin cenderung sedikit kaku atau kurang fleksibel terhadap perubahan. Ada kalanya kamu bisa terlalu kritis, baik terhadap diri sendiri maupun orang lain, jika standar tinggimu tidak terpenuhi. Jangan terlalu keras pada diri sendiri, ya!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu mungkin terlihat pendiam, tapi bicaramu lugas dan langsung ke intinya. Kamu hanya akan berbicara jika ada sesuatu yang penting untuk dikatakan, dan kamu sangat menghargai kejujuran. Lingkaran pertemananmu mungkin kecil, tapi sangat setia, karena kamu membangun hubungan yang dalam.
+
+                <strong>Caramu Bekerja:</strong> Kamu adalah pekerja keras yang sistematis dan metodis. Kamu akan unggul di lingkungan yang terstruktur, di mana aturan dan prosedur jelas. Mengelola proyek dan menjaga ketertiban adalah keahlianmu yang tak tertandingi.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu konsisten, bisa diandalkan, dan sangat setia kepada orang-orang terdekatmu. Kamu memprioritaskan kewajiban dan tanggung jawab, menemukan kenyamanan dalam rutinitas dan keteraturan. Emosi tidak mudah menggoyahkanmu, karena kamu punya pondasi yang kuat. Salut!`,
             },
             ISTJ_T: {
-                name: 'The Turbulent Logistician',
-                description: `<strong>Gambaran Umum:</strong> ISTJ-T adalah individu yang praktis, logis, dan bertanggung jawab, namun lebih rentan terhadap keraguan diri dan tekanan. Meskipun mereka menghargai ketertiban, mereka mungkin lebih cemas tentang kinerja dan bagaimana mereka dipersepsikan oleh orang lain.
-                <strong>Kekuatan:</strong> Sama andalnya dengan ISTJ-A, namun dengan dorongan internal yang lebih kuat untuk perbaikan diri dan kesempurnaan. Mereka sangat teliti karena takut membuat kesalahan.
-                <strong>Area Pengembangan:</strong> Cenderung terlalu kritis terhadap diri sendiri, mudah stres, dan mungkin membutuhkan lebih banyak validasi eksternal. Mereka bisa terjebak dalam detail dan sulit melepaskan kekhawatiran.
-                <strong>Interaksi Sosial:</strong> Bisa lebih tertutup karena kekhawatiran akan penilaian. Meskipun setia, mereka mungkin membutuhkan jaminan dari orang lain.
-                <strong>Gaya Kerja:</strong> Sangat rajin dan teliti, seringkali bekerja ekstra untuk memastikan pekerjaan sempurna. Mereka mungkin merasa tertekan oleh tenggat waktu dan takut gagal.
-                <strong>Kehidupan Pribadi:</strong> Berjuang dengan kecemasan internal meskipun menunjukkan eksterior yang tenang. Mereka mencari stabilitas dan kepastian, tetapi mungkin sulit menemukan ketenangan pikiran.`,
+                name: 'Ahli Logistik yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah ISTJ-T, si Ahli Logistik yang Bergejolak. Kamu adalah individu yang praktis, logis, dan bertanggung jawab, sama seperti ISTJ lainnya. Namun, kamu mungkin lebih rentan terhadap keraguan diri dan tekanan. Meskipun kamu sangat menghargai ketertiban, kamu cenderung lebih cemas tentang bagaimana kinerjamu dan bagaimana orang lain memandangmu.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat andal, bahkan lebih teliti dari yang lain, karena ada dorongan internal yang kuat untuk terus memperbaiki diri dan mencapai kesempurnaan. Kamu sangat hati-hati karena tidak ingin membuat kesalahan.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Kamu mungkin terlalu kritis terhadap diri sendiri dan mudah merasa stres. Kamu mungkin membutuhkan lebih banyak validasi atau pengakuan dari luar. Terkadang, kamu bisa terjebak dalam detail dan sulit melepaskan kekhawatiran. Ingat, tidak ada yang sempurna!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu bisa lebih tertutup karena khawatir akan penilaian orang lain. Meskipun setia kepada teman-temanmu, kamu mungkin butuh jaminan dari mereka.
+
+                <strong>Caramu Bekerja:</strong> Kamu sangat rajin dan teliti, seringkali bekerja ekstra untuk memastikan setiap pekerjaan sempurna. Namun, kamu mungkin merasa tertekan oleh tenggat waktu dan takut akan kegagalan.
+
+                <strong>Kehidupan Pribadimu:</strong> Di balik eksterior yang tenang, kamu sering berjuang dengan kecemasan internal. Kamu mencari stabilitas dan kepastian, tetapi terkadang sulit menemukan ketenangan pikiran. Cobalah untuk lebih menerima dirimu apa adanya, ya!`,
             },
             // ---- ISFJ Variants ----
             ISFJ_A: {
-                name: 'The Assertive Defender',
-                description: `<strong>Gambaran Umum:</strong> ISFJ-A adalah individu yang hangat, bertanggung jawab, dan teliti dengan kepercayaan diri yang kuat. Mereka sangat setia dan fokus pada melayani orang lain serta menjaga harmoni, seringkali menjadi pilar dukungan bagi komunitas mereka.
-                <strong>Kekuatan:</strong> Sangat peduli, dapat diandalkan, detail-oriented, dan memiliki komitmen yang teguh. Mereka mampu menangani kritik dengan baik dan tidak terlalu terpaku pada pendapat orang lain.
-                <strong>Area Pengembangan:</strong> Cenderung memprioritaskan kebutuhan orang lain di atas kebutuhan sendiri, sulit menolak permintaan, dan bisa menghindari konflik.
-                <strong>Interaksi Sosial:</strong> Ramah dan mendukung, mereka adalah pendengar yang baik dan sering menawarkan bantuan praktis. Mereka membangun hubungan yang kuat dan langgeng.
-                <strong>Gaya Kerja:</strong> Pekerja keras yang teliti dan berdedikasi. Mereka unggul dalam peran yang membutuhkan perhatian terhadap detail dan layanan pelanggan, seperti di bidang perawatan kesehatan atau pendidikan.
-                <strong>Kehidupan Pribadi:</strong> Setia dan tradisional, mereka menciptakan lingkungan yang stabil dan nyaman bagi orang yang mereka cintai. Mereka menemukan kepuasan dalam membantu dan mendukung keluarga serta teman.`,
+                name: 'Sang Pembela yang Tegas',
+                description: `Halo [NamaPengguna], selamat! Kamu adalah seorang ISFJ-A, sang Pembela yang Tegas. Kamu adalah individu yang hangat, bertanggung jawab, dan teliti dengan rasa percaya diri yang kuat. Kamu sangat setia dan fokus pada melayani orang lain, serta menjaga harmoni dalam lingkunganmu. Kamu sering menjadi pilar dukungan yang kokoh bagi komunitasmu tanpa banyak terpengaruh kritik.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat peduli, bisa diandalkan, berorientasi pada detail, dan punya komitmen yang teguh. Kamu hebat dalam menerima kritik dengan kepala dingin dan tidak terlalu terpaku pada pendapat orang lain.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Terkadang, kamu cenderung memprioritaskan kebutuhan orang lain di atas kebutuhanmu sendiri, yang bisa membuatmu sulit menolak permintaan. Kamu juga mungkin cenderung menghindari konflik. Ingat, kebutuhanmu juga penting!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu ramah dan sangat mendukung. Kamu adalah pendengar yang baik dan sering menawarkan bantuan praktis kepada siapa pun yang membutuhkan. Kamu membangun hubungan yang kuat dan langgeng dengan orang-orang di sekitarmu.
+
+                <strong>Caramu Bekerja:</strong> Kamu adalah pekerja keras yang teliti dan berdedikasi. Kamu akan unggul dalam peran yang membutuhkan perhatian terhadap detail dan pelayanan yang tulus, seperti di bidang perawatan kesehatan atau pendidikan.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu setia dan cenderung tradisional. Kamu menciptakan lingkungan yang stabil dan nyaman bagi orang-orang yang kamu cintai. Kamu menemukan kepuasan sejati dalam membantu dan mendukung keluarga serta teman-temanmu.`,
             },
             ISFJ_T: {
-                name: 'The Turbulent Defender',
-                description: `<strong>Gambaran Umum:</strong> ISFJ-T adalah individu yang hangat, bertanggung jawab, dan teliti, namun lebih peka terhadap perasaan dan kritik, serta cenderung lebih berhati-hati. Mereka sangat ingin membantu orang lain tetapi mungkin berjuang dengan keraguan diri dan kecemasan tentang apakah mereka cukup baik.
-                <strong>Kekuatan:</strong> Sangat berempati, peduli, dan teliti, dengan dorongan kuat untuk melakukan yang terbaik. Mereka sangat responsif terhadap kebutuhan orang lain.
-                <strong>Area Pengembangan:</strong> Mudah merasa bersalah, cenderung terlalu menganalisis situasi, dan mungkin membutuhkan validasi lebih sering. Mereka bisa rentan terhadap stres karena kekhawatiran.
-                <strong>Interaksi Sosial:</strong> Sangat perhatian dan peka terhadap suasana hati orang lain. Mereka mungkin ragu untuk mengambil risiko sosial atau mengungkapkan kebutuhan mereka sendiri.
-                <strong>Gaya Kerja:</strong> Sangat berdedikasi dan perfeksionis, memastikan semua tugas dilakukan dengan benar. Mereka mungkin merasa terbebani oleh tekanan dan takut mengecewakan orang lain.
-                <strong>Kehidupan Pribadi:</strong> Berusaha menciptakan harmoni dan dukungan, tetapi mungkin berjuang dengan kecemasan internal tentang apakah mereka telah melakukan cukup. Mereka mencari jaminan dan stabilitas.`,
+                name: 'Sang Pembela yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah ISFJ-T, si Pembela yang Bergejolak. Kamu adalah individu yang hangat, bertanggung jawab, dan teliti, sama seperti ISFJ lainnya. Namun, kamu lebih peka terhadap perasaan dan kritik, serta cenderung lebih berhati-hati. Kamu sangat ingin membantu orang lain tetapi mungkin berjuang dengan keraguan diri dan kecemasan tentang apakah kamu sudah cukup baik.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat berempati, peduli, dan teliti. Ada dorongan kuat dalam dirimu untuk terus memberikan yang terbaik. Kamu sangat responsif terhadap kebutuhan orang lain.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Kamu mudah merasa bersalah, cenderung terlalu menganalisis situasi, dan mungkin membutuhkan validasi lebih sering. Kamu bisa rentan terhadap stres karena kekhawatiran. Cobalah untuk sedikit rileks, ya!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu sangat perhatian dan peka terhadap suasana hati orang lain. Kamu mungkin ragu untuk mengambil risiko sosial atau mengungkapkan kebutuhanmu sendiri karena khawatir akan reaksi orang lain.
+
+                <strong>Caramu Bekerja:</strong> Kamu sangat berdedikasi dan perfeksionis, memastikan semua tugas dilakukan dengan benar. Namun, kamu mungkin merasa terbebani oleh tekanan dan takut mengecewakan orang lain.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu berusaha keras menciptakan harmoni dan dukungan bagi orang-orang terdekatmu, tetapi mungkin berjuang dengan kecemasan internal tentang apakah kamu sudah melakukan cukup. Kamu mencari jaminan dan penerimaan dari lingkunganmu.`,
             },
             // ---- INFJ Variants ----
             INFJ_A: {
-                name: 'The Assertive Advocate',
-                description: `<strong>Gambaran Umum:</strong> INFJ-A adalah individu yang idealistik, berwawasan, dan berprinsip dengan rasa diri yang kuat. Mereka didorong oleh nilai-nilai yang kuat dan keinginan untuk membuat perbedaan positif di dunia, tanpa terlalu terpengaruh oleh opini negatif atau keraguan diri.
-                <strong>Kekuatan:</strong> Sangat berwawasan, penuh empati, visioner, dan memiliki keyakinan yang teguh. Mereka mampu tetap tenang dan fokus pada tujuan jangka panjang mereka.
-                <strong>Area Pengembangan:</strong> Terkadang bisa terlalu idealis, sulit menerima realitas yang tidak sejalan dengan visi mereka, dan bisa terlalu menjaga diri.
-                <strong>Interaksi Sosial:</strong> Memiliki pemahaman yang mendalam tentang manusia, seringkali terlihat tenang dan ramah, namun selektif dalam memilih teman. Mereka mencari koneksi yang bermakna.
-                <strong>Gaya Kerja:</strong> Pekerja keras yang sangat termotivasi oleh tujuan dan nilai-nilai. Mereka unggul dalam peran yang memungkinkan mereka untuk menginspirasi perubahan positif, seperti di bidang konseling, menulis, atau aktivisme.
-                <strong>Kehidupan Pribadi:</strong> Mencari makna dan tujuan dalam segala hal. Mereka adalah individu yang reflektif dan sangat pribadi, yang menemukan kepuasan dalam pertumbuhan diri dan melayani orang lain secara mendalam.`,
+                name: 'Sang Advokat yang Tegas',
+                description: `Selamat [NamaPengguna]! Kamu adalah seorang INFJ-A, sang Advokat yang Tegas. Kamu adalah individu yang idealistik, berwawasan, dan berprinsip, dengan rasa diri yang sangat kuat. Kamu didorong oleh nilai-nilai yang kokoh dan keinginan tulus untuk membuat perbedaan positif di dunia ini, tanpa terlalu terpengaruh oleh opini negatif atau keraguan diri. Kamu punya misi dalam hidup ini!
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat berwawasan, penuh empati, seorang visioner sejati, dan memiliki keyakinan yang teguh pada apa yang kamu yakini. Kamu mampu tetap tenang dan fokus pada tujuan jangka panjangmu, bahkan saat keadaan sulit.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Terkadang kamu bisa terlalu idealis, yang mungkin membuatmu sulit menerima realitas yang tidak sejalan dengan visimu. Ada kalanya kamu terlalu menjaga diri dan sulit membuka sepenuhnya. Cobalah untuk sedikit lebih fleksibel, ya!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu punya pemahaman yang mendalam tentang sifat manusia. Kamu sering terlihat tenang dan ramah, namun sangat selektif dalam memilih teman. Kamu mencari koneksi yang bermakna dan dalam, bukan sekadar basa-basi.
+
+                <strong>Caramu Bekerja:</strong> Kamu adalah pekerja keras yang sangat termotivasi oleh tujuan dan nilai-nilai luhur. Kamu akan unggul dalam peran yang memungkinkanmu untuk menginspirasi perubahan positif, seperti di bidang konseling, menulis, atau aktivisme sosial.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu mencari makna dan tujuan dalam segala hal yang kamu lakukan. Kamu adalah individu yang reflektif dan sangat pribadi, yang menemukan kepuasan sejati dalam pertumbuhan diri dan melayani orang lain secara mendalam. Jiwamu penuh dengan aspirasi yang indah!`,
             },
             INFJ_T: {
-                name: 'The Turbulent Advocate',
-                description: `<strong>Gambaran Umum:</strong> INFJ-T adalah individu yang idealistik, berwawasan, dan berprinsip, namun lebih peka terhadap kritik dan cenderung lebih cemas tentang apakah mereka memenuhi potensi mereka. Mereka memiliki keinginan kuat untuk membantu, tetapi mungkin berjuang dengan keraguan diri.
-                <strong>Kekuatan:</strong> Sangat berempati, berwawasan luas, dan berdedikasi untuk penyebab yang mereka yakini. Mereka memiliki dorongan besar untuk perbaikan diri dan membuat dunia menjadi tempat yang lebih baik.
-                <strong>Area Pengembangan:</strong> Mudah merasa stres, rentan terhadap kritik, dan mungkin terlalu keras pada diri sendiri. Mereka bisa terjebak dalam kekhawatiran tentang masa depan atau ketidaksempurnaan.
-                <strong>Interaksi Sosial:</strong> Sangat perhatian terhadap perasaan orang lain dan berusaha menghindari konflik. Mereka mungkin membutuhkan jaminan lebih sering dan berhati-hati dalam membuka diri.
-                <strong>Gaya Kerja:</strong> Berdedikasi dan etis, bekerja dengan hati dan pikiran. Mereka mungkin mengalami tekanan batin yang signifikan untuk mencapai kesempurnaan dalam pekerjaan mereka.
-                <strong>Kehidupan Pribadi:</strong> Sangat introspektif dan mencari makna yang mendalam. Mereka berjuang dengan kecemasan internal untuk memenuhi standar tinggi mereka sendiri dan ingin memastikan tindakan mereka selaras dengan nilai-nilai mereka.`,
+                name: 'Sang Advokat yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah INFJ-T, si Advokat yang Bergejolak. Kamu adalah individu yang idealistik, berwawasan, dan berprinsip, sama seperti INFJ lainnya. Namun, kamu lebih peka terhadap kritik dan cenderung lebih cemas tentang apakah kamu memenuhi potensi besarmu. Kamu punya keinginan kuat untuk membantu, tetapi mungkin berjuang dengan keraguan diri dan kekhawatiran yang mendalam.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat berempati, punya wawasan yang luas, dan sangat berdedikasi pada tujuan mulia yang kamu yakini. Ada dorongan besar dalam dirimu untuk terus memperbaiki diri dan membuat dunia menjadi tempat yang lebih baik.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Kamu mudah merasa stres dan rentan terhadap kritik. Kamu bisa terlalu keras pada diri sendiri, dan bisa terjebak dalam kekhawatiran tentang masa depan atau ketidaksempurnaan. Ingat, perjalanan itu lebih penting daripada kesempurnaan.
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu sangat perhatian terhadap perasaan orang lain dan berusaha keras menghindari konflik. Kamu mungkin membutuhkan jaminan lebih sering dan berhati-hati dalam membuka diri sepenuhnya karena takut dihakimi.
+
+                <strong>Caramu Bekerja:</strong> Kamu berdedikasi dan etis, bekerja dengan hati dan pikiranmu. Namun, kamu mungkin mengalami tekanan batin yang signifikan untuk mencapai kesempurnaan dalam pekerjaanmu, yang kadang membuatmu merasa lelah.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu sangat introspektif dan selalu mencari makna yang mendalam dalam hidup. Kamu berjuang dengan kecemasan internal untuk memenuhi standar tinggi yang kamu tetapkan untuk diri sendiri, dan ingin memastikan semua tindakanmu selaras dengan nilai-nilai luhurmu. Kamu memang pribadi yang dalam!`,
             },
             // ---- INTJ Variants ----
             INTJ_A: {
-                name: 'The Assertive Architect',
-                description: `<strong>Gambaran Umum:</strong> INTJ-A adalah individu yang strategis, inovatif, dan mandiri dengan kepercayaan diri yang teguh. Mereka memiliki pemikiran yang mendalam dan berfokus pada perencanaan jangka panjang serta sistem yang efisien, tanpa banyak terpengaruh oleh keraguan diri atau pendapat orang lain.
-                <strong>Kekuatan:</strong> Sangat cerdas, visioner, logis, tegas, dan mandiri. Mereka mampu melihat gambaran besar dan merencanakan masa depan dengan presisi.
-                <strong>Area Pengembangan:</strong> Cenderung kaku, kurang peka terhadap emosi orang lain, dan bisa terlihat dingin atau arogan. Terkadang mengabaikan detail kecil dalam kehidupan sehari-hari.
-                <strong>Interaksi Sosial:</strong> Lebih suka diskusi intelektual daripada obrolan ringan. Mereka menghargai kecerdasan dan kompetensi, dan mungkin terlihat menyendiri.
-                <strong>Gaya Kerja:</strong> Pemikir strategis yang unggul dalam pemecahan masalah yang kompleks dan perencanaan jangka panjang. Mereka adalah pemimpin alami yang efisien dan fokus pada hasil.
-                <strong>Kehidupan Pribadi:</strong> Mendorong diri mereka sendiri untuk terus belajar dan tumbuh. Mereka menghargai kemandirian dan rasionalitas, mencari pengetahuan dan penguasaan dalam berbagai bidang.`,
+                name: 'Sang Arsitek yang Tegas',
+                description: `Selamat [NamaPengguna]! Kamu adalah seorang INTJ-A, sang Arsitek yang Tegas. Kamu adalah individu yang strategis, inovatif, dan mandiri, dengan kepercayaan diri yang teguh. Kamu punya pemikiran yang mendalam dan selalu fokus pada perencanaan jangka panjang serta menciptakan sistem yang sangat efisien. Kamu tidak banyak terpengaruh oleh keraguan diri atau pendapat orang lain, karena kamu tahu apa yang kamu inginkan.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat cerdas, visioner, logis, tegas, dan mandiri. Kamu punya kemampuan luar biasa untuk melihat gambaran besar dan merencanakan masa depan dengan presisi yang mengejutkan.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Terkadang kamu bisa terlihat kaku atau kurang peka terhadap emosi orang lain, yang mungkin membuatmu terkesan dingin atau arogan. Ada kalanya kamu mengabaikan detail kecil dalam kehidupan sehari-hari karena terlalu fokus pada hal besar. Cobalah untuk sedikit lebih membumi, ya!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu lebih suka diskusi intelektual yang merangsang daripada obrolan ringan. Kamu sangat menghargai kecerdasan dan kompetensi, dan mungkin terlihat menyendiri, tapi itu karena kamu lebih suka kualitas daripada kuantitas.
+
+                <strong>Caramu Bekerja:</strong> Kamu adalah pemikir strategis yang unggul dalam pemecahan masalah kompleks dan perencanaan jangka panjang. Kamu adalah pemimpin alami yang sangat efisien dan selalu fokus pada hasil akhir.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu selalu mendorong dirimu sendiri untuk terus belajar dan bertumbuh. Kamu sangat menghargai kemandirian dan rasionalitas, selalu mencari pengetahuan dan penguasaan dalam berbagai bidang. Pikiranmu adalah istanamu, dan kamu selalu membangunnya dengan cermat!`,
             },
             INTJ_T: {
-                name: 'The Turbulent Architect',
-                description: `<strong>Gambaran Umum:</strong> INTJ-T adalah individu yang strategis, inovatif, dan mandiri, namun lebih rentan terhadap keraguan diri dan tekanan. Mereka memiliki keinginan yang kuat untuk mencapai keunggulan tetapi mungkin lebih cemas tentang apakah mereka memenuhi standar tinggi mereka sendiri.
-                <strong>Kekuatan:</strong> Sangat analitis, visioner, dan memiliki dorongan kuat untuk terus meningkatkan diri. Mereka dapat sangat teliti dalam pekerjaan mereka karena takut membuat kesalahan.
-                <strong>Area Pengembangan:</strong> Cenderung terlalu kritis terhadap diri sendiri, mudah stres oleh tekanan, dan mungkin lebih sensitif terhadap kritik. Mereka bisa terjebak dalam analisis berlebihan.
-                <strong>Interaksi Sosial:</strong> Mungkin lebih menarik diri karena kekhawatiran akan penilaian atau untuk menghindari situasi yang tidak efisien. Mereka mencari validasi atas ide-ide mereka.
-                <strong>Gaya Kerja:</strong> Pemikir yang sangat teliti dan berdedikasi, seringkali bekerja ekstra untuk memastikan solusi sempurna. Mereka mungkin merasa terbebani oleh ekspektasi dan takut akan kegagalan.
-                <strong>Kehidupan Pribadi:</strong> Berusaha keras untuk mencapai kesempurnaan pribadi dan intelektual. Mereka mungkin berjuang dengan kecemasan internal dan perasaan tidak pernah "cukup" cerdas atau kompeten.`,
+                name: 'Sang Arsitek yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah INTJ-T, si Arsitek yang Bergejolak. Kamu adalah individu yang strategis, inovatif, dan mandiri, sama seperti INTJ lainnya. Namun, kamu lebih rentan terhadap keraguan diri dan tekanan. Kamu punya keinginan kuat untuk mencapai keunggulan, tetapi mungkin lebih cemas tentang apakah kamu memenuhi standar tinggi yang kamu tetapkan untuk diri sendiri.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat analitis dan punya dorongan kuat untuk terus meningkatkan diri. Kamu bisa sangat teliti dalam pekerjaanmu karena takut membuat kesalahan, yang justru membuat hasilmu luar biasa detail.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Kamu cenderung terlalu kritis terhadap diri sendiri dan mudah merasa stres di bawah tekanan. Kamu mungkin lebih sensitif terhadap kritik, dan bisa terjebak dalam analisis berlebihan yang membuatmu sulit bergerak maju. Cobalah untuk lebih percaya pada dirimu sendiri!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu mungkin lebih menarik diri karena kekhawatiran akan penilaian atau untuk menghindari situasi yang tidak efisien. Kamu mencari validasi atas ide-ide cemerlangmu dari orang lain.
+
+                <strong>Caramu Bekerja:</strong> Kamu adalah pemikir yang sangat teliti dan berdedikasi, seringkali bekerja ekstra untuk memastikan solusi yang kamu hasilkan sempurna. Namun, kamu mungkin merasa terbebani oleh ekspektasi (terutama dari dirimu sendiri!) dan takut akan kegagalan.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu berusaha keras untuk mencapai kesempurnaan pribadi dan intelektual. Kamu mungkin berjuang dengan kecemasan internal dan perasaan tidak pernah "cukup" cerdas atau kompeten. Ingatlah, bahwa proses belajar adalah bagian dari perjalanan, dan kamu sudah sangat hebat!`,
             },
             // ---- ISTP Variants ----
             ISTP_A: {
-                name: 'The Assertive Virtuoso',
-                description: `<strong>Gambaran Umum:</strong> ISTP-A adalah individu yang praktis, realistis, dan spontan dengan kepercayaan diri yang kuat. Mereka senang menjelajahi dunia melalui tangan dan mata, dan sangat terampil dalam memecahkan masalah praktis. Mereka tenang di bawah tekanan dan tidak mudah terganggu.
-                <strong>Kekuatan:</strong> Sangat adaptif, logis, terampil secara mekanis, berani, dan tenang dalam krisis. Mereka adalah pemecah masalah yang hebat dan berani mengambil risiko.
-                <strong>Area Pengembangan:</strong> Cenderung impulsif, sulit berkomitmen, dan kadang mengabaikan perasaan orang lain. Bisa terlihat acuh tak acuh.
-                <strong>Interaksi Sosial:</strong> Santai dan pragmatis, mereka lebih suka berinteraksi melalui aktivitas bersama daripada percakapan mendalam. Mereka menghargai kemandirian.
-                <strong>Gaya Kerja:</strong> Unggul dalam pekerjaan yang membutuhkan pemecahan masalah langsung dan keterampilan tangan. Mereka tidak suka birokrasi dan lebih suka bekerja secara mandiri.
-                <strong>Kehidupan Pribadi:</strong> Mencari sensasi dan pengalaman baru. Mereka menikmati petualangan dan kebebasan, menjalani hidup di saat ini dan belajar melalui eksplorasi praktis.`,
+                name: 'Sang Virtuoso yang Tegas',
+                description: `Selamat [NamaPengguna]! Kamu adalah seorang ISTP-A, sang Virtuoso yang Tegas. Kamu adalah individu yang praktis, realistis, dan spontan, dengan kepercayaan diri yang kuat. Kamu senang menjelajahi dunia ini melalui tangan dan mata, dan sangat terampil dalam memecahkan masalah praktis. Kamu bisa tetap tenang di bawah tekanan dan tidak mudah terganggu. Kamu ini "problem solver" sejati!
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat adaptif, logis, terampil secara mekanis, berani, dan tenang dalam situasi krisis. Kamu adalah pemecah masalah yang hebat dan tidak takut mengambil risiko.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Terkadang kamu bisa sedikit impulsif atau sulit berkomitmen pada rencana jangka panjang. Ada kalanya kamu mengabaikan perasaan orang lain, yang mungkin membuatmu terlihat acuh tak acuh. Cobalah untuk lebih peka, ya!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu santai dan pragmatis, lebih suka berinteraksi melalui aktivitas bersama daripada percakapan yang terlalu mendalam. Kamu sangat menghargai kemandirian, baik untuk dirimu sendiri maupun orang lain.
+
+                <strong>Caramu Bekerja:</strong> Kamu akan unggul dalam pekerjaan yang membutuhkan pemecahan masalah langsung dan keterampilan tangan yang cekatan. Kamu tidak suka birokrasi dan lebih suka bekerja secara mandiri, dengan tanganmu sendiri.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu selalu mencari sensasi dan pengalaman baru. Kamu menikmati petualangan dan kebebasan, menjalani hidup sepenuhnya di saat ini, dan belajar banyak melalui eksplorasi praktis. Hidupmu adalah sebuah eksperimen yang menyenangkan!`,
             },
             ISTP_T: {
-                name: 'The Turbulent Virtuoso',
-                description: `<strong>Gambaran Umum:</strong> ISTP-T adalah individu yang praktis, realistis, dan spontan, namun lebih peka terhadap kritik dan cenderung lebih cemas tentang kinerja mereka. Mereka menikmati pemecahan masalah tetapi mungkin berjuang dengan keraguan diri.
-                <strong>Kekuatan:</strong> Sama adaptifnya dengan ISTP-A, namun dengan dorongan yang lebih besar untuk meningkatkan keterampilan mereka. Mereka sangat teliti dalam aktivitas praktis.
-                <strong>Area Pengembangan:</strong> Cenderung mudah merasa frustrasi jika tidak berhasil, bisa menjadi terlalu kritis terhadap diri sendiri, dan mungkin membutuhkan lebih banyak validasi eksternal.
-                <strong>Interaksi Sosial:</strong> Bisa lebih tertutup dan berhati-hati, kadang menarik diri jika merasa tidak dihargai atau dikritik.
-                <strong>Gaya Kerja:</strong> Mahir dalam memecahkan masalah, tetapi mungkin mengalami tekanan internal untuk melakukan pekerjaan dengan sempurna. Mereka bisa merasa cemas tentang hasilnya.
-                <strong>Kehidupan Pribadi:</strong> Mencari pengalaman, tetapi mungkin merasa cemas tentang kinerja mereka dalam aktivitas tersebut. Mereka berjuang dengan perasaan tidak pernah "cukup" terampil atau kompeten.`,
+                name: 'Sang Virtuoso yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah ISTP-T, si Virtuoso yang Bergejolak. Kamu adalah individu yang praktis, realistis, dan spontan, sama seperti ISTP lainnya. Namun, kamu lebih peka terhadap kritik dan cenderung lebih cemas tentang kinerjamu. Kamu menikmati memecahkan masalah, tetapi mungkin berjuang dengan keraguan diri dan kekhawatiran internal.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sama adaptifnya dengan ISTP-A, namun dengan dorongan yang lebih besar untuk terus meningkatkan keterampilanmu. Kamu bisa sangat teliti dalam aktivitas praktis karena ingin semua berjalan sempurna.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Kamu cenderung mudah merasa frustrasi jika tidak segera berhasil, dan bisa menjadi terlalu kritis terhadap diri sendiri. Kamu mungkin membutuhkan lebih banyak validasi eksternal untuk merasa yakin. Ingat, kegagalan adalah guru terbaik!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu bisa lebih tertutup dan berhati-hati, kadang menarik diri jika merasa tidak dihargai atau dikritik. Kamu mungkin butuh waktu untuk membuka diri sepenuhnya.
+
+                <strong>Caramu Bekerja:</strong> Kamu mahir dalam memecahkan masalah dengan cepat, tetapi mungkin mengalami tekanan internal untuk melakukan pekerjaan dengan sempurna. Kamu bisa merasa cemas tentang hasilnya, meskipun kamu sebenarnya sangat mampu.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu selalu mencari pengalaman baru, tetapi mungkin merasa cemas tentang kinerjamu dalam setiap aktivitas tersebut. Kamu berjuang dengan perasaan tidak pernah "cukup" terampil atau kompeten. Jangan khawatir, kamu jauh lebih baik dari yang kamu kira!`,
             },
             // ---- ISFP Variants ----
             ISFP_A: {
-                name: 'The Assertive Adventurer',
-                description: `<strong>Gambaran Umum:</strong> ISFP-A adalah individu yang sensitif, artistik, dan fleksibel dengan rasa diri yang kuat. Mereka hidup di saat ini, menghargai keindahan, dan memiliki keinginan kuat untuk kebebasan berekspresi, tanpa terlalu peduli dengan validasi eksternal.
-                <strong>Kekuatan:</strong> Sangat kreatif, berempati, adaptif, spontan, dan menghargai kebebasan. Mereka ekspresif melalui seni dan tindakan.
-                <strong>Area Pengembangan:</strong> Sulit membuat rencana jangka panjang, bisa terlalu mudah menyerah pada hal-hal yang tidak menyenangkan, dan kurang tegas.
-                <strong>Interaksi Sosial:</strong> Ramah dan mudah bergaul, tetapi membutuhkan ruang pribadi. Mereka menunjukkan kasih sayang melalui tindakan dan kehadiran.
-                <strong>Gaya Kerja:</strong> Unggul dalam lingkungan yang fleksibel yang memungkinkan ekspresi diri dan kreativitas. Mereka tidak suka rutinitas dan batasan.
-                <strong>Kehidupan Pribadi:</strong> Sangat menikmati pengalaman sensorik dan keindahan. Mereka adalah individu yang autentik dan mencari makna dalam kehidupan sehari-hari, hidup sesuai dengan nilai-nilai batin mereka.`,
+                name: 'Sang Petualang yang Tegas',
+                description: `Selamat [NamaPengguna]! Kamu adalah seorang ISFP-A, sang Petualang yang Tegas. Kamu adalah individu yang sensitif, artistik, dan fleksibel, dengan rasa diri yang kuat. Kamu hidup sepenuhnya di saat ini, sangat menghargai keindahan di sekitarmu, dan memiliki keinginan kuat untuk kebebasan berekspresi. Kamu tidak terlalu peduli dengan validasi dari luar karena kamu sudah merasa lengkap dengan dirimu sendiri.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat kreatif, berempati, adaptif, spontan, dan menghargai kebebasan sejati. Kamu mengekspresikan dirimu dengan indah melalui seni dan tindakan.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Kamu mungkin sulit membuat rencana jangka panjang dan bisa terlalu mudah menyerah pada hal-hal yang tidak menyenangkan. Terkadang kamu kurang tegas dalam menyampaikan keinginanmu. Jangan ragu untuk bersuara, ya!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu ramah dan mudah bergaul, tetapi kamu juga membutuhkan ruang pribadimu sendiri. Kamu menunjukkan kasih sayangmu melalui tindakan nyata dan kehadiran yang tulus, bukan sekadar kata-kata.
+
+                <strong>Caramu Bekerja:</strong> Kamu akan unggul di lingkungan kerja yang fleksibel, yang memungkinkanmu untuk mengekspresikan diri dan kreativitasmu secara bebas. Kamu tidak suka rutinitas yang kaku dan batasan-batasan yang mengekang.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu sangat menikmati pengalaman sensorik dan keindahan di sekitarmu. Kamu adalah individu yang autentik dan selalu mencari makna dalam kehidupan sehari-hari, hidup sesuai dengan nilai-nilai batinmu yang kuat. Nikmati setiap momen, sang Petualang!`,
             },
             ISFP_T: {
-                name: 'The Turbulent Adventurer',
-                description: `<strong>Gambaran Umum:</strong> ISFP-T adalah individu yang sensitif, artistik, dan fleksibel, namun lebih peka terhadap emosi dan kritik, serta cenderung lebih berhati-hati dalam berekspresi. Mereka mencari kebebasan tetapi mungkin berjuang dengan keraguan diri.
-                <strong>Kekuatan:</strong> Sangat berempati, kreatif, dan responsif terhadap lingkungan. Mereka memiliki dorongan yang kuat untuk meningkatkan ekspresi artistik atau pribadi mereka.
-                <strong>Area Pengembangan:</strong> Cenderung mudah merasa bersalah atau malu, rentan terhadap stres, dan mungkin membutuhkan lebih banyak jaminan. Mereka bisa terlalu kritis terhadap karya mereka sendiri.
-                <strong>Interaksi Sosial:</strong> Sangat perhatian terhadap perasaan orang lain, tetapi mungkin ragu untuk menunjukkan diri mereka yang sebenarnya karena takut dihakimi.
-                <strong>Gaya Kerja:</strong> Unggul dalam pekerjaan yang memungkinkan kreativitas, tetapi mungkin merasa tertekan oleh ekspektasi atau kritik. Mereka bisa menunda-nunda karena perfeksionisme.
-                <strong>Kehidupan Pribadi:</strong> Mencari keindahan dan makna, tetapi berjuang dengan kecemasan internal tentang apakah mereka telah melakukan cukup atau apakah mereka cukup baik. Mereka mencari validasi dan penerimaan.`,
+                name: 'Sang Petualang yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah ISFP-T, si Petualang yang Bergejolak. Kamu adalah individu yang sensitif, artistik, dan fleksibel, sama seperti ISFP lainnya. Namun, kamu lebih peka terhadap emosi dan kritik, serta cenderung lebih berhati-hati dalam berekspresi. Kamu mencari kebebasan, tetapi mungkin berjuang dengan keraguan diri dan kecemasan.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat berempati, kreatif, dan responsif terhadap lingkungan sekitarmu. Kamu punya dorongan kuat untuk terus meningkatkan ekspresi artistik atau pribadimu.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Kamu cenderung mudah merasa bersalah atau malu, dan rentan terhadap stres. Kamu mungkin membutuhkan lebih banyak jaminan dan bisa terlalu kritis terhadap karya atau dirimu sendiri. Ingat, karyamu itu unik dan indah!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu sangat perhatian terhadap perasaan orang lain, tetapi mungkin ragu untuk menunjukkan dirimu yang sebenarnya karena takut dihakimi. Cobalah untuk lebih berani menjadi dirimu sendiri.
+
+                <strong>Caramu Bekerja:</strong> Kamu akan unggul dalam pekerjaan yang memungkinkan kreativitas, tetapi mungkin merasa tertekan oleh ekspektasi atau kritik. Terkadang kamu bisa menunda-nunda karena perfeksionisme yang tinggi.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu selalu mencari keindahan dan makna dalam hidup, tetapi berjuang dengan kecemasan internal tentang apakah kamu sudah melakukan cukup atau apakah kamu sudah cukup baik. Kamu mencari validasi dan penerimaan, dan itu wajar kok. Tetaplah berkreasi!`,
             },
             // ---- INFP Variants ----
             INFP_A: {
-                name: 'The Assertive Mediator',
-                description: `<strong>Gambaran Umum:</strong> INFP-A adalah individu yang idealistik, ingin tahu, dan berempati dengan rasa diri yang kuat. Mereka didorong oleh nilai-nilai yang kuat, mencari makna dalam segala hal, dan peduli terhadap orang lain, tanpa banyak terpengaruh oleh keraguan atau validasi eksternal.
-                <strong>Kekuatan:</strong> Sangat kreatif, berempati, idealistik, otentik, dan gigih dalam mengejar nilai-nilai mereka. Mereka percaya pada visi mereka dan tidak mudah goyah.
-                <strong>Area Pengembangan:</strong> Terkadang bisa terlalu idealis, sulit menghadapi kenyataan pahit, dan bisa terlalu menjaga diri. Mungkin mengabaikan detail praktis.
-                <strong>Interaksi Sosial:</strong> Hangat dan peduli, mereka mencari koneksi yang mendalam dan bermakna. Mereka adalah pendengar yang baik dan sangat mendukung.
-                <strong>Gaya Kerja:</strong> Unggul dalam peran yang memungkinkan mereka untuk mengejar tujuan yang bermakna dan berekspresi secara kreatif, seperti menulis, seni, atau konseling. Mereka termotivasi oleh nilai-nilai.
-                <strong>Kehidupan Pribadi:</strong> Sangat introspektif dan mencari tujuan hidup. Mereka hidup sesuai dengan sistem nilai internal mereka yang kuat, menemukan kepuasan dalam membantu orang lain dan mengejar aspirasi idealis mereka.`,
+                name: 'Sang Mediator yang Tegas',
+                description: `Selamat [NamaPengguna]! Kamu adalah seorang INFP-A, sang Mediator yang Tegas. Kamu adalah individu yang idealistik, ingin tahu, dan berempati, dengan rasa diri yang kuat. Kamu didorong oleh nilai-nilai yang kokoh, selalu mencari makna dalam segala hal, dan sangat peduli terhadap orang lain. Kamu tidak banyak terpengaruh oleh keraguan atau validasi eksternal, karena kompas moralmu sangat kuat.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat kreatif, berempati, idealistik, otentik, dan gigih dalam mengejar nilai-nilai yang kamu yakini. Kamu percaya pada visimu dan tidak mudah goyah.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Terkadang kamu bisa terlalu idealis, yang mungkin membuatmu sulit menghadapi kenyataan pahit. Ada kalanya kamu terlalu menjaga diri dan sulit membuka sepenuhnya. Jangan lupa, dunia ini butuh idealisme, tapi juga realisme.
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu hangat dan sangat peduli. Kamu selalu mencari koneksi yang mendalam dan bermakna. Kamu adalah pendengar yang luar biasa dan sangat mendukung teman-temanmu.
+
+                <strong>Caramu Bekerja:</strong> Kamu akan unggul dalam peran yang memungkinkanmu untuk mengejar tujuan yang bermakna dan berekspresi secara kreatif, seperti menulis, seni, atau konseling. Kamu sangat termotivasi oleh nilai-nilai yang kamu anut.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu sangat introspektif dan selalu mencari tujuan hidup yang lebih tinggi. Kamu hidup sesuai dengan sistem nilai internalmu yang kuat, dan menemukan kepuasan sejati dalam membantu orang lain serta mengejar aspirasi idealismu. Jiwamu adalah lautan ide dan empati!`,
             },
             INFP_T: {
-                name: 'The Turbulent Mediator',
-                description: `<strong>Gambaran Umum:</strong> INFP-T adalah individu yang idealistik, ingin tahu, dan berempati, namun lebih peka terhadap kritik dan cenderung lebih cemas tentang apakah mereka memenuhi potensi mereka. Mereka memiliki keinginan kuat untuk membuat perbedaan tetapi mungkin berjuang dengan keraguan diri.
-                <strong>Kekuatan:</strong> Sangat berempati, berwawasan luas, dan didorong oleh keinginan kuat untuk kebaikan. Mereka memiliki dorongan besar untuk perbaikan diri dan sangat sensitif terhadap kebutuhan orang lain.
-                <strong>Area Pengembangan:</strong> Mudah merasa stres, rentan terhadap kritik, dan bisa menjadi terlalu keras pada diri sendiri. Mereka mungkin kesulitan membuat keputusan karena takut membuat kesalahan.
-                <strong>Interaksi Sosial:</strong> Sangat perhatian terhadap perasaan orang lain dan berusaha menghindari konflik. Mereka mungkin membutuhkan jaminan dan dukungan lebih sering.
-                <strong>Gaya Kerja:</strong> Berdedikasi dan etis, bekerja dengan hati dan pikiran. Mereka mungkin mengalami tekanan batin yang signifikan untuk mencapai kesempurnaan dalam pekerjaan mereka dan memenuhi standar tinggi.
-                <strong>Kehidupan Pribadi:</strong> Sangat introspektif dan mencari makna yang mendalam. Mereka berjuang dengan kecemasan internal untuk memenuhi standar tinggi mereka sendiri dan ingin memastikan tindakan mereka selaras dengan nilai-nilai mereka.`,
+                name: 'Sang Mediator yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah INFP-T, si Mediator yang Bergejolak. Kamu adalah individu yang idealistik, ingin tahu, dan berempati, sama seperti INFP lainnya. Namun, kamu lebih peka terhadap kritik dan cenderung lebih cemas tentang apakah kamu memenuhi harapanmu sendiri. Kamu punya keinginan kuat untuk membuat perbedaan, tetapi mungkin berjuang dengan keraguan diri dan kekhawatiran yang mendalam.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat berempati, punya wawasan luas, dan didorong oleh keinginan kuat untuk kebaikan. Kamu punya dorongan besar untuk terus memperbaiki diri dan sangat sensitif terhadap kebutuhan orang lain.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Kamu mudah merasa stres dan rentan terhadap kritik. Kamu bisa menjadi terlalu keras pada diri sendiri dan mungkin kesulitan membuat keputusan karena takut membuat kesalahan. Ingat, setiap langkah kecil itu berarti!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu sangat perhatian terhadap perasaan orang lain dan berusaha keras menghindari konflik. Kamu mungkin membutuhkan jaminan dan dukungan lebih sering, karena kamu cenderung memikirkan banyak hal.
+
+                <strong>Caramu Bekerja:</strong> Kamu berdedikasi dan etis, bekerja dengan hati dan pikiranmu. Namun, kamu mungkin mengalami tekanan batin yang signifikan untuk mencapai kesempurnaan dalam pekerjaanmu dan memenuhi standar tinggi.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu sangat introspektif dan selalu mencari makna yang mendalam dalam hidup. Kamu berjuang dengan kecemasan internal untuk memenuhi standar tinggi yang kamu tetapkan untuk diri sendiri, dan ingin memastikan semua tindakanmu selaras dengan nilai-nilai luhurmu. Kamu adalah jiwa yang penuh semangat dan refleksi!`,
             },
             // ---- INTP Variants ----
             INTP_A: {
-                name: 'The Assertive Logician',
-                description: `<strong>Gambaran Umum:</strong> INTP-A adalah individu yang analitis, objektif, dan inovatif dengan kepercayaan diri yang kuat. Mereka memiliki rasa ingin tahu yang besar, menyukai teori, dan mahir dalam memecahkan masalah kompleks secara logis, tanpa terpengaruh oleh keraguan diri.
-                <strong>Kekuatan:</strong> Sangat cerdas, logis, orisinal, mandiri, dan analitis. Mereka adalah pemecah masalah yang hebat dan mampu berpikir di luar kotak.
-                <strong>Area Pengembangan:</strong> Cenderung menarik diri secara sosial, kurang peka terhadap emosi orang lain, dan bisa menunda-nunda tugas praktis.
-                <strong>Interaksi Sosial:</strong> Lebih suka diskusi yang merangsang secara intelektual daripada interaksi sosial yang dangkal. Mereka mungkin terlihat acuh tak acuh atau jauh.
-                <strong>Gaya Kerja:</strong> Unggul dalam pekerjaan yang membutuhkan analisis mendalam, penelitian, dan pengembangan konsep. Mereka menghargai otonomi dan kebebasan intelektual.
-                <strong>Kehidupan Pribadi:</strong> Didorong oleh rasa ingin tahu intelektual yang tak terbatas. Mereka menghabiskan banyak waktu dalam pikiran mereka sendiri, menganalisis, dan memecahkan teka-teki dunia.`,
+                name: 'Sang Logikus yang Tegas',
+                description: `Selamat [NamaPengguna]! Kamu adalah seorang INTP-A, sang Logikus yang Tegas. Kamu adalah individu yang analitis, objektif, dan inovatif, dengan kepercayaan diri yang kuat. Kamu punya rasa ingin tahu yang sangat besar, menyukai teori, dan mahir dalam memecahkan masalah kompleks secara logis. Kamu tidak banyak terpengaruh oleh keraguan diri, karena kamu percaya pada kekuatan pikiranmu.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat cerdas, logis, orisinal dalam berpikir, mandiri, dan sangat analitis. Kamu adalah pemecah masalah yang hebat dan selalu mampu berpikir di luar kotak.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Terkadang kamu cenderung menarik diri secara sosial atau kurang peka terhadap emosi orang lain. Ada kalanya kamu menunda-nunda tugas praktis karena terlalu sibuk dengan pemikiranmu yang kompleks. Cobalah untuk lebih terhubung dengan dunia di sekitarmu!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu lebih suka diskusi yang merangsang secara intelektual daripada interaksi sosial yang dangkal. Kamu mungkin terlihat acuh tak acuh atau jauh, tapi itu karena fokusmu pada ide-ide.
+
+                <strong>Caramu Bekerja:</strong> Kamu akan unggul dalam pekerjaan yang membutuhkan analisis mendalam, penelitian, dan pengembangan konsep-konsep baru. Kamu sangat menghargai otonomi dan kebebasan intelektual.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu didorong oleh rasa ingin tahu intelektual yang tak terbatas. Kamu menghabiskan banyak waktu dalam pikiranmu sendiri, menganalisis, dan memecahkan teka-teki dunia ini. Pikiranmu adalah laboratorium ide-ide brilian!`,
             },
             INTP_T: {
-                name: 'The Turbulent Logician',
-                description: `<strong>Gambaran Umum:</strong> INTP-T adalah individu yang analitis, objektif, dan inovatif, namun lebih peka terhadap kritik dan cenderung lebih cemas tentang kecerdasan atau kemampuan mereka. Mereka mencari kebenaran tetapi mungkin berjuang dengan keraguan diri.
-                <strong>Kekuatan:</strong> Sangat analitis dan memiliki dorongan kuat untuk memahami dunia secara mendalam. Mereka dapat menjadi sangat teliti dalam penelitian dan pemikiran mereka.
-                <strong>Area Pengembangan:</strong> Cenderung terlalu menganalisis, mudah merasa stres, dan mungkin membutuhkan lebih banyak validasi intelektual. Mereka bisa menunda-nunda karena takut tidak sempurna.
-                <strong>Interaksi Sosial:</strong> Mungkin lebih menarik diri karena kekhawatiran tentang penilaian atau untuk menghindari argumen yang tidak konstruktif. Mereka mencari pengakuan atas ide-ide mereka.
-                <strong>Gaya Kerja:</strong> Unggul dalam pemikiran kompleks, tetapi mungkin mengalami tekanan internal untuk menghasilkan solusi yang sempurna. Mereka bisa terbebani oleh ekspektasi.
-                <strong>Kehidupan Pribadi:</strong> Didorong oleh keinginan untuk belajar dan memahami, tetapi berjuang dengan kecemasan internal tentang apakah mereka "cukup pintar" atau apakah ide-ide mereka cukup baik.`,
+                name: 'Sang Logikus yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah INTP-T, si Logikus yang Bergejolak. Kamu adalah individu yang analitis, objektif, dan inovatif, sama seperti INTP lainnya. Namun, kamu lebih peka terhadap kritik dan cenderung lebih cemas tentang kecerdasan atau kemampuanmu. Kamu mencari kebenaran, tetapi mungkin berjuang dengan keraguan diri yang bisa menghambatmu.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat analitis dan punya dorongan kuat untuk memahami dunia secara mendalam. Kamu bisa menjadi sangat teliti dalam penelitian dan pemikiranmu karena ingin mencapai kesempurnaan.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Kamu cenderung terlalu menganalisis dan mudah merasa stres. Kamu mungkin membutuhkan lebih banyak validasi intelektual, dan bisa menunda-nunda karena takut hasilnya tidak sempurna. Ingat, proses belajar itu dinamis!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu mungkin lebih menarik diri karena kekhawatiran tentang penilaian atau untuk menghindari argumen yang tidak konstruktif. Kamu sangat mencari pengakuan atas ide-ide brillianmu.
+
+                <strong>Caramu Bekerja:</strong> Kamu akan unggul dalam pemikiran kompleks, tetapi mungkin mengalami tekanan internal yang besar untuk menghasilkan solusi yang sempurna. Kamu bisa terbebani oleh ekspektasi yang tinggi, terutama dari dirimu sendiri.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu didorong oleh keinginan untuk belajar dan memahami, tetapi berjuang dengan kecemasan internal tentang apakah kamu "cukup pintar" atau apakah ide-idemu cukup baik. Percayalah pada potensimu, karena pikiranmu luar biasa!`,
             },
             // ---- ESTP Variants ----
             ESTP_A: {
-                name: 'The Assertive Entrepreneur',
-                description: `<strong>Gambaran Umum:</strong> ESTP-A adalah individu yang energik, spontan, dan berorientasi pada tindakan dengan rasa percaya diri yang tinggi. Mereka senang hidup di saat ini, mencari pengalaman baru, dan pandai dalam situasi krisis, tanpa banyak terpengaruh oleh keraguan.
-                <strong>Kekuatan:</strong> Sangat berani, adaptif, praktis, karismatik, dan gesit dalam pemecahan masalah. Mereka menikmati menjadi pusat perhatian dan mengambil risiko.
-                <strong>Area Pengembangan:</strong> Cenderung impulsif, kurang perencanaan jangka panjang, dan bisa terlalu ceroboh. Terkadang mengabaikan konsekuensi.
-                <strong>Interaksi Sosial:</strong> Ramah, mudah bergaul, dan menarik. Mereka adalah "jiwa" pesta dan menikmati interaksi yang hidup dan aktif.
-                <strong>Gaya Kerja:</strong> Unggul dalam situasi yang dinamis dan membutuhkan tindakan cepat. Mereka adalah pemecah masalah yang hebat di lapangan dan lebih suka belajar melalui pengalaman langsung.
-                <strong>Kehidupan Pribadi:</strong> Mencari kegembiraan dan petualangan. Mereka menjalani hidup sepenuhnya, dengan fokus pada apa yang terjadi sekarang dan apa yang bisa mereka alami selanjutnya.`,
+                name: 'Sang Pengusaha yang Tegas',
+                description: `Selamat [NamaPengguna]! Kamu adalah seorang ESTP-A, sang Pengusaha yang Tegas. Kamu adalah individu yang energik, spontan, dan berorientasi pada tindakan, dengan rasa percaya diri yang tinggi. Kamu senang hidup sepenuhnya di saat ini, selalu mencari pengalaman baru, dan sangat pandai dalam situasi krisis. Kamu tidak banyak terpengaruh oleh keraguan, karena kamu adalah seorang yang berani bertindak!
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat berani, adaptif, praktis, karismatik, dan gesit dalam memecahkan masalah di tempat. Kamu menikmati menjadi pusat perhatian dan tidak takut mengambil risiko yang diperhitungkan.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Terkadang kamu cenderung impulsif atau kurang perencanaan jangka panjang. Ada kalanya kamu bisa terlalu ceroboh atau mengabaikan konsekuensi di masa depan. Cobalah untuk sedikit lebih strategis, ya!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu ramah, mudah bergaul, dan sangat menarik. Kamu adalah "jiwa" dari setiap pesta dan menikmati interaksi yang hidup serta aktif dengan banyak orang.
+
+                <strong>Caramu Bekerja:</strong> Kamu akan unggul dalam situasi yang dinamis dan membutuhkan tindakan cepat. Kamu adalah pemecah masalah yang hebat di lapangan dan lebih suka belajar melalui pengalaman langsung.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu selalu mencari kegembiraan dan petualangan. Kamu menjalani hidup ini sepenuhnya, dengan fokus pada apa yang terjadi sekarang dan apa yang bisa kamu alami selanjutnya. Hidup bagimu adalah sebuah arena yang penuh aksi!`,
             },
             ESTP_T: {
-                name: 'The Turbulent Entrepreneur',
-                description: `<strong>Gambaran Umum:</strong> ESTP-T adalah individu yang energik, spontan, dan berorientasi pada tindakan, namun lebih peka terhadap kritik dan cenderung lebih cemas tentang kinerja mereka. Mereka mencari kegembiraan tetapi mungkin berjuang dengan keraguan diri.
-                <strong>Kekuatan:</strong> Sama adaptifnya dengan ESTP-A, namun dengan dorongan yang lebih besar untuk meningkatkan keterampilan dan mencapai kesempurnaan dalam tindakan mereka.
-                <strong>Area Pengembangan:</strong> Cenderung mudah merasa frustrasi jika tidak berhasil, bisa menjadi terlalu kritis terhadap diri sendiri, dan mungkin membutuhkan lebih banyak validasi eksternal.
-                <strong>Interaksi Sosial:</strong> Bisa lebih menarik diri atau berhati-hati dalam situasi baru karena kekhawatiran akan penilaian. Mereka mencari pengakuan atas tindakan berani mereka.
-                <strong>Gaya Kerja:</strong> Mahir dalam bertindak cepat, tetapi mungkin mengalami tekanan internal untuk melakukan pekerjaan dengan sempurna. Mereka bisa merasa cemas tentang hasilnya.
-                <strong>Kehidupan Pribadi:</strong> Mencari pengalaman, tetapi mungkin merasa cemas tentang kinerja mereka dalam aktivitas tersebut. Mereka berjuang dengan perasaan tidak pernah "cukup" berani atau kompeten.`,
+                name: 'Sang Pengusaha yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah ESTP-T, si Pengusaha yang Bergejolak. Kamu adalah individu yang energik, spontan, dan berorientasi pada tindakan, sama seperti ESTP lainnya. Namun, kamu lebih peka terhadap kritik dan cenderung lebih cemas tentang kinerjamu. Kamu mencari kegembiraan, tetapi mungkin berjuang dengan keraguan diri dan kekhawatiran internal.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sama adaptifnya dengan ESTP-A, namun dengan dorongan yang lebih besar untuk terus meningkatkan keterampilan dan mencapai kesempurnaan dalam setiap tindakanmu.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Kamu cenderung mudah merasa frustrasi jika tidak segera berhasil, dan bisa menjadi terlalu kritis terhadap diri sendiri. Kamu mungkin membutuhkan lebih banyak validasi eksternal untuk merasa yakin. Ingat, tidak semua hal harus sempurna!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu bisa lebih menarik diri atau berhati-hati dalam situasi baru karena kekhawatiran akan penilaian. Kamu sangat mencari pengakuan atas tindakan beranimu.
+
+                <strong>Caramu Bekerja:</strong> Kamu mahir dalam bertindak cepat, tetapi mungkin mengalami tekanan internal untuk melakukan pekerjaan dengan sempurna. Kamu bisa merasa cemas tentang hasilnya, meskipun kamu sebenarnya sangat mampu.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu selalu mencari pengalaman baru, tetapi mungkin merasa cemas tentang kinerjamu dalam setiap aktivitas tersebut. Kamu berjuang dengan perasaan tidak pernah "cukup" berani atau kompeten. Santai saja, kamu sudah hebat!`,
             },
             // ---- ESFP Variants ----
             ESFP_A: {
-                name: 'The Assertive Entertainer',
-                description: `<strong>Gambaran Umum:</strong> ESFP-A adalah individu yang ramah, ceria, dan spontan dengan rasa percaya diri yang tinggi. Mereka menikmati menjadi pusat perhatian, memiliki energi yang menular, dan senang menghibur orang lain, tanpa banyak terpengaruh oleh kritik.
-                <strong>Kekuatan:</strong> Sangat sosial, optimis, spontan, antusias, dan adaptif. Mereka hidup di saat ini dan menyebarkan kegembiraan.
-                <strong>Area Pengembangan:</strong> Cenderung impulsif, kurang perencanaan jangka panjang, dan mudah terganggu. Bisa menghindari konflik.
-                <strong>Interaksi Sosial:</strong> Pusat perhatian alami, sangat sosial dan ramah. Mereka menikmati menjadi bagian dari kelompok dan membuat orang lain tertawa.
-                <strong>Gaya Kerja:</strong> Unggul dalam peran yang membutuhkan interaksi dengan orang banyak dan layanan. Mereka adalah komunikator yang hebat dan menikmati pekerjaan yang menyenangkan.
-                <strong>Kehidupan Pribadi:</strong> Mencari kesenangan dan pengalaman baru. Mereka menikmati hidup sepenuhnya, dengan fokus pada apa yang bisa mereka nikmati di saat ini dan bagaimana mereka bisa berbagi kegembiraan dengan orang lain.`,
+                name: 'Sang Penghibur yang Tegas',
+                description: `Selamat [NamaPengguna]! Kamu adalah seorang ESFP-A, sang Penghibur yang Tegas. Kamu adalah individu yang ramah, ceria, dan spontan, dengan rasa percaya diri yang tinggi. Kamu menikmati menjadi pusat perhatian, memiliki energi yang menular, dan senang menghibur orang lain. Kamu tidak banyak terpengaruh oleh kritik, karena kamu tahu bagaimana membawa kebahagiaan!
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat sosial, optimis, spontan, antusias, dan adaptif. Kamu hidup sepenuhnya di saat ini dan selalu menyebarkan kegembiraan kepada orang di sekitarmu.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Terkadang kamu cenderung impulsif atau kurang perencanaan jangka panjang. Kamu bisa mudah terganggu dan mungkin menghindari konflik. Cobalah untuk sedikit lebih fokus dan hadapi masalah, ya!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu adalah pusat perhatian alami, sangat sosial dan ramah. Kamu menikmati berada di sekitar orang lain dan selalu memastikan semua orang tertawa dan merasa nyaman.
+
+                <strong>Caramu Bekerja:</strong> Kamu akan unggul dalam peran yang membutuhkan interaksi dengan banyak orang dan pelayanan. Kamu adalah komunikator yang hebat dan sangat menikmati pekerjaan yang menyenangkan dan dinamis.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu selalu mencari kesenangan dan pengalaman baru. Kamu menikmati hidup ini sepenuhnya, dengan fokus pada apa yang bisa kamu nikmati di saat ini dan bagaimana kamu bisa berbagi kegembiraan dengan orang lain. Hidup bagimu adalah sebuah panggung yang gemerlap!`,
             },
             ESFP_T: {
-                name: 'The Turbulent Entertainer',
-                description: `<strong>Gambaran Umum:</strong> ESFP-T adalah individu yang ramah, ceria, dan spontan, namun lebih peka terhadap emosi dan kritik, serta cenderung lebih cemas tentang bagaimana mereka dipersepsikan. Mereka mencari kesenangan tetapi mungkin berjuang dengan keraguan diri.
-                <strong>Kekuatan:</strong> Sangat berempati, antusias, dan responsif terhadap lingkungan. Mereka memiliki dorongan yang kuat untuk meningkatkan interaksi sosial dan menghibur orang lain.
-                <strong>Area Pengembangan:</strong> Cenderung mudah merasa cemas tentang pandangan orang lain, rentan terhadap stres, dan mungkin membutuhkan lebih banyak jaminan. Mereka bisa terlalu kritis terhadap penampilan atau tindakan mereka sendiri.
-                <strong>Interaksi Sosial:</strong> Sangat perhatian terhadap perasaan orang lain dan berusaha untuk disukai. Mereka mungkin ragu untuk mengambil risiko sosial atau menunjukkan sisi rentan mereka.
-                <strong>Gaya Kerja:</strong> Unggul dalam peran yang memungkinkan interaksi sosial, tetapi mungkin merasa tertekan oleh ekspektasi atau kritik. Mereka bisa menunda-nunda karena perfeksionisme.
-                <strong>Kehidupan Pribadi:</strong> Mencari kegembiraan dan koneksi, tetapi berjuang dengan kecemasan internal tentang apakah mereka telah melakukan cukup atau apakah mereka cukup disukai. Mereka mencari validasi dan penerimaan.`,
+                name: 'Sang Penghibur yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah ESFP-T, si Penghibur yang Bergejolak. Kamu adalah individu yang ramah, ceria, dan spontan, sama seperti ESFP lainnya. Namun, kamu lebih peka terhadap emosi dan kritik, serta cenderung lebih cemas tentang bagaimana kamu dipersepsikan oleh orang lain. Kamu mencari kesenangan, tetapi mungkin berjuang dengan keraguan diri dan kekhawatiran internal.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat berempati, antusias, dan responsif terhadap lingkungan sekitarmu. Kamu punya dorongan yang kuat untuk terus meningkatkan interaksi sosial dan menghibur orang lain.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Kamu cenderung mudah merasa cemas tentang pandangan orang lain dan rentan terhadap stres. Kamu mungkin membutuhkan lebih banyak jaminan dan bisa terlalu kritis terhadap penampilan atau tindakanmu sendiri. Ingat, kamu sudah luar biasa!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu sangat perhatian terhadap perasaan orang lain dan berusaha untuk disukai. Kamu mungkin ragu untuk mengambil risiko sosial atau menunjukkan sisi rentanmu karena takut dihakimi.
+
+                <strong>Caramu Bekerja:</strong> Kamu akan unggul dalam peran yang memungkinkan interaksi sosial, tetapi mungkin merasa tertekan oleh ekspektasi atau kritik. Terkadang kamu bisa menunda-nunda karena perfeksionisme yang tinggi.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu selalu mencari kegembiraan dan koneksi, tetapi berjuang dengan kecemasan internal tentang apakah kamu sudah melakukan cukup atau apakah kamu cukup disukai. Kamu mencari validasi dan penerimaan, dan itu hal yang wajar. Tetaplah bersinar!`,
             },
             // ---- ENFP Variants ----
             ENFP_A: {
-                name: 'The Assertive Campaigner',
-                description: `<strong>Gambaran Umum:</strong> ENFP-A adalah individu yang antusias, kreatif, dan sosial dengan rasa percaya diri yang tinggi. Mereka memiliki semangat yang membara, ide-ide inovatif, dan senang terhubung dengan orang lain secara mendalam, tanpa terlalu terpengaruh oleh keraguan diri.
-                <strong>Kekuatan:</strong> Sangat karismatik, inovatif, bersemangat, berempati, dan persuasif. Mereka melihat potensi di mana-mana dan menginspirasi orang lain.
-                <strong>Area Pengembangan:</strong> Cenderung mudah terganggu, sulit fokus pada satu proyek, dan bisa terlalu idealis. Mungkin kurang memperhatikan detail.
-                <strong>Interaksi Sosial:</strong> Sangat ramah, mudah bergaul, dan menarik. Mereka adalah komunikator yang hebat dan senang menjalin hubungan yang mendalam dengan orang lain.
-                <strong>Gaya Kerja:</strong> Unggul dalam peran yang memungkinkan mereka untuk menginspirasi perubahan positif, seperti di bidang konseling, menulis, atau aktivisme. Mereka tidak suka rutinitas dan batasan.
-                <strong>Kehidupan Pribadi:</strong> Dipenuhi dengan ide-ide baru dan kemungkinan. Mereka menikmati eksplorasi dan pertumbuhan pribadi, selalu mencari pengalaman yang bermakna dan otentik.`,
+                name: 'Sang Juru Kampanye yang Tegas',
+                description: `Selamat [NamaPengguna]! Kamu adalah seorang ENFP-A, sang Juru Kampanye yang Tegas. Kamu adalah individu yang antusias, kreatif, dan sosial, dengan rasa percaya diri yang tinggi. Kamu memiliki semangat yang membara, ide-ide inovatif yang tak ada habisnya, dan senang terhubung dengan orang lain secara mendalam. Kamu tidak banyak terpengaruh oleh keraguan diri, karena kamu adalah pembawa perubahan sejati!
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat karismatik, inovatif, bersemangat, berempati, dan persuasif. Kamu punya kemampuan luar biasa untuk melihat potensi di mana-mana dan menginspirasi orang lain.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Terkadang kamu cenderung mudah terganggu atau sulit fokus pada satu proyek. Ada kalanya kamu bisa terlalu idealis dan mungkin kurang memperhatikan detail kecil. Ingat, ide-ide hebat butuh eksekusi yang detail juga!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu sangat ramah, mudah bergaul, dan menarik. Kamu adalah komunikator yang hebat dan sangat senang menjalin hubungan yang mendalam dan bermakna dengan orang lain.
+
+                <strong>Caramu Bekerja:</strong> Kamu akan unggul dalam peran yang membutuhkan kreativitas, kolaborasi, dan kemampuan untuk menginspirasi. Kamu tidak suka rutinitas yang membosankan dan batasan-batasan yang mengekang.
+
+                <strong>Kehidupan Pribadimu:</strong> Hidupmu selalu dipenuhi dengan ide-ide baru dan kemungkinan yang tak terbatas. Kamu sangat menikmati eksplorasi dan pertumbuhan pribadi, selalu mencari pengalaman yang bermakna dan otentik. Teruslah menyebarkan semangatmu!`,
             },
             ENFP_T: {
-                name: 'The Turbulent Campaigner',
-                description: `<strong>Gambaran Umum:</strong> ENFP-T adalah individu yang antusias, kreatif, dan sosial, namun lebih peka terhadap kritik dan cenderung lebih cemas tentang apakah mereka memenuhi potensi mereka. Mereka mencari koneksi dan ide-ide baru tetapi mungkin berjuang dengan keraguan diri.
-                <strong>Kekuatan:</strong> Sangat berempati, berwawasan luas, dan didorong oleh keinginan kuat untuk kebaikan. Mereka memiliki dorongan besar untuk perbaikan diri dan sangat sensitif terhadap kebutuhan orang lain.
-                <strong>Area Pengembangan:</strong> Mudah merasa stres, rentan terhadap kritik, dan bisa menjadi terlalu keras pada diri sendiri. Mereka mungkin kesulitan membuat keputusan karena takut membuat kesalahan.
-                <strong>Interaksi Sosial:</strong> Sangat perhatian terhadap perasaan orang lain dan berusaha menghindari konflik. Mereka mungkin membutuhkan jaminan dan dukungan lebih sering.
-                <strong>Gaya Kerja:</strong> Berdedikasi dan etis, bekerja dengan hati dan pikiran. Mereka mungkin mengalami tekanan batin yang signifikan untuk mencapai kesempurnaan dalam pekerjaan mereka dan memenuhi standar tinggi.
-                <strong>Kehidupan Pribadi:</strong> Sangat introspektif dan mencari makna yang mendalam. Mereka berjuang dengan kecemasan internal untuk memenuhi standar tinggi mereka sendiri dan ingin memastikan tindakan mereka selaras dengan nilai-nilai mereka.`,
+                name: 'Sang Juru Kampanye yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah ENFP-T, si Juru Kampanye yang Bergejolak. Kamu adalah individu yang antusias, kreatif, dan sosial, sama seperti ENFP lainnya. Namun, kamu lebih peka terhadap kritik dan cenderung lebih cemas tentang apakah kamu memenuhi potensi besarmu. Kamu mencari koneksi dan ide-ide baru, tetapi mungkin berjuang dengan keraguan diri dan kekhawatiran yang mendalam.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat berempati, punya wawasan luas, dan didorong oleh keinginan kuat untuk kebaikan. Kamu punya dorongan besar untuk terus memperbaiki diri dan sangat sensitif terhadap kebutuhan orang lain.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Kamu mudah merasa stres dan rentan terhadap kritik. Kamu bisa menjadi terlalu keras pada diri sendiri dan mungkin kesulitan membuat keputusan karena takut membuat kesalahan. Ingat, kamu sudah berjuang keras!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu sangat perhatian terhadap perasaan orang lain dan berusaha keras menghindari konflik. Kamu mungkin membutuhkan jaminan dan dukungan lebih sering, karena kamu cenderung memikirkan banyak hal.
+
+                <strong>Caramu Bekerja:</strong> Kamu berdedikasi dan etis, bekerja dengan hati dan pikiranmu. Namun, kamu mungkin mengalami tekanan batin yang signifikan untuk mencapai kesempurnaan dalam pekerjaanmu dan memenuhi standar tinggi.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu sangat introspektif dan selalu mencari makna yang mendalam dalam hidup. Kamu berjuang dengan kecemasan internal untuk memenuhi standar tinggi yang kamu tetapkan untuk diri sendiri, dan ingin memastikan semua tindakanmu selaras dengan nilai-nilai luhurmu. Kamu adalah jiwa yang penuh semangat dan refleksi!`,
             },
             // ---- ENTP Variants ----
             ENTP_A: {
-                name: 'The Assertive Debater',
-                description: `<strong>Gambaran Umum:</strong> ENTP-A adalah individu yang cerdas, inovatif, dan menantang dengan rasa percaya diri yang tinggi. Mereka senang berdebat ide-ide, menemukan celah dalam argumen, dan selalu mencari cara baru untuk melakukan sesuatu, tanpa banyak terpengaruh keraguan diri.
-                <strong>Kekuatan:</strong> Sangat cerdas, logis, orisinal, argumentatif, dan memiliki pemikiran cepat. Mereka senang mengeksplorasi ide-ide baru dan menantang status quo.
-                <strong>Area Pengembangan:</strong> Cenderung kontroversial, sulit berkomitmen, dan bisa mengabaikan detail emosional. Mungkin terlalu banyak berdebat.
-                <strong>Interaksi Sosial:</strong> Karismatik dan menarik, mereka menikmati debat yang merangsang secara intelektual. Mereka bisa terlihat agresif atau kurang peka dalam argumen.
-                <strong>Gaya Kerja:</strong> Unggul dalam peran yang membutuhkan inovasi, pemecahan masalah, dan kemampuan untuk melihat berbagai perspektif. Mereka tidak suka rutinitas dan lebih suka kebebasan intelektual.
-                <strong>Kehidupan Pribadi:</strong> Didorong oleh rasa ingin tahu intelektual yang tak terbatas. Mereka menikmati tantangan dan selalu mencari cara baru untuk memahami dunia dan berinteraksi dengannya.`,
+                name: 'Sang Pendebat yang Tegas',
+                description: `Selamat [NamaPengguna]! Kamu adalah seorang ENTP-A, sang Pendebat yang Tegas. Kamu adalah individu yang cerdas, inovatif, dan senang menantang status quo, dengan rasa percaya diri yang tinggi. Kamu suka sekali berdebat ide-ide, menemukan celah dalam argumen, dan selalu mencari cara baru untuk melakukan sesuatu. Kamu tidak banyak terpengaruh keraguan diri, karena kamu tahu pikiranmu sangat tajam!
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat cerdas, logis, orisinal, argumentatif, dan punya pemikiran yang sangat cepat. Kamu senang mengeksplorasi ide-ide baru dan menantang segala hal yang sudah ada.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Terkadang kamu bisa terlihat kontroversial atau sulit berkomitmen pada satu hal. Ada kalanya kamu mengabaikan detail emosional atau mungkin terlalu banyak berdebat sampai orang lain lelah. Cobalah untuk sedikit lebih diplomatis, ya!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu karismatik dan menarik, sangat menikmati debat yang merangsang secara intelektual. Terkadang kamu bisa terlihat agresif atau kurang peka dalam argumen, tapi niatmu sebenarnya adalah mencari kebenaran.
+
+                <strong>Caramu Bekerja:</strong> Kamu akan unggul dalam peran yang membutuhkan inovasi, pemecahan masalah, dan kemampuan untuk melihat berbagai perspektif. Kamu tidak suka rutinitas dan sangat menghargai kebebasan intelektual.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu didorong oleh rasa ingin tahu intelektual yang tak terbatas. Kamu menikmati setiap tantangan dan selalu mencari cara baru untuk memahami dunia serta berinteraksi dengannya. Pikiranmu adalah mesin ide yang tak pernah berhenti!`,
             },
             ENTP_T: {
-                name: 'The Turbulent Debater',
-                description: `<strong>Gambaran Umum:</strong> ENTP-T adalah individu yang cerdas, inovatif, dan menantang, namun lebih peka terhadap kritik dan cenderung lebih cemas tentang kecerdasan atau kemampuan mereka. Mereka mencari kebenaran dan ide-ide baru tetapi mungkin berjuang dengan keraguan diri.
-                <strong>Kekuatan:</strong> Sangat analitis dan memiliki dorongan kuat untuk memahami dunia secara mendalam. Mereka dapat menjadi sangat teliti dalam penelitian dan pemikiran mereka.
-                <strong>Area Pengembangan:</strong> Cenderung terlalu menganalisis, mudah merasa stres, dan mungkin membutuhkan lebih banyak validasi intelektual. Mereka bisa menunda-nunda karena takut tidak sempurna.
-                <strong>Interaksi Sosial:</strong> Mungkin lebih menarik diri karena kekhawatiran tentang penilaian atau untuk menghindari argumen yang tidak konstruktif. Mereka mencari pengakuan atas ide-ide mereka.
-                <strong>Gaya Kerja:</strong> Unggul dalam pemikiran kompleks, tetapi mungkin mengalami tekanan internal untuk menghasilkan solusi yang sempurna. Mereka bisa terbebani oleh ekspektasi.
-                <strong>Kehidupan Pribadi:</strong> Didorong oleh keinginan untuk belajar dan memahami, tetapi berjuang dengan kecemasan internal tentang apakah mereka "cukup pintar" atau apakah ide-ide mereka cukup baik.`,
+                name: 'Sang Pendebat yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah ENTP-T, si Pendebat yang Bergejolak. Kamu adalah individu yang cerdas, inovatif, dan senang menantang status quo, sama seperti ENTP lainnya. Namun, kamu lebih peka terhadap kritik dan cenderung lebih cemas tentang kecerdasan atau kemampuanmu. Kamu mencari kebenaran dan ide-ide baru, tetapi mungkin berjuang dengan keraguan diri dan kekhawatiran yang mendalam.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat analitis dan punya dorongan kuat untuk memahami dunia secara mendalam. Kamu bisa menjadi sangat teliti dalam penelitian dan pemikiranmu karena ingin mencapai kesempurnaan.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Kamu cenderung terlalu menganalisis dan mudah merasa stres. Kamu mungkin membutuhkan lebih banyak validasi intelektual, dan bisa menunda-nunda karena takut hasilnya tidak sempurna. Ingat, setiap proses itu penting!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu mungkin lebih menarik diri karena kekhawatiran tentang penilaian atau untuk menghindari argumen yang tidak konstruktif. Kamu sangat mencari pengakuan atas ide-ide brillianmu.
+
+                <strong>Caramu Bekerja:</strong> Kamu akan unggul dalam pemikiran kompleks, tetapi mungkin mengalami tekanan internal yang besar untuk menghasilkan solusi yang sempurna. Kamu bisa terbebani oleh ekspektasi yang tinggi, terutama dari dirimu sendiri.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu didorong oleh keinginan untuk belajar dan memahami, tetapi berjuang dengan kecemasan internal tentang apakah kamu "cukup pintar" atau apakah ide-idemu cukup baik. Percayalah pada dirimu, karena potensimu tak terbatas!`,
             },
             // ---- ESTJ Variants ----
             ESTJ_A: {
-                name: 'The Assertive Executive',
-                description: `<strong>Gambaran Umum:</strong> ESTJ-A adalah individu yang teratur, efisien, dan praktis dengan rasa percaya diri yang tinggi. Mereka adalah pemimpin alami yang menghargai tradisi, kerja keras, dan memastikan segalanya berjalan lancar, tanpa terpengaruh oleh keraguan diri.
-                <strong>Kekuatan:</strong> Sangat terorganisir, bertanggung jawab, efisien, logis, dan tegas. Mereka adalah pemimpin yang hebat dan mampu menjalankan proyek dengan sukses.
-                <strong>Area Pengembangan:</strong> Cenderung kaku, kurang fleksibel terhadap perubahan, dan bisa terlalu fokus pada aturan. Terkadang mengabaikan perasaan.
-                <strong>Interaksi Sosial:</strong> Langsung dan lugas, mereka menghargai kejujuran dan efisiensi dalam komunikasi. Mereka adalah pemimpin kelompok yang alami.
-                <strong>Gaya Kerja:</strong> Sangat berorientasi pada hasil dan efisiensi. Mereka unggul dalam peran manajemen, di mana mereka dapat mengatur dan memimpin tim untuk mencapai tujuan.
-                <strong>Kehidupan Pribadi:</strong> Konsisten dan dapat diandalkan, mereka menciptakan lingkungan yang stabil dan teratur. Mereka menemukan kepuasan dalam struktur dan memenuhi tanggung jawab mereka.`,
+                name: 'Sang Eksekutif yang Tegas',
+                description: `Selamat [NamaPengguna]! Kamu adalah seorang ESTJ-A, sang Eksekutif yang Tegas. Kamu adalah individu yang teratur, efisien, dan praktis, dengan rasa percaya diri yang tinggi. Kamu adalah pemimpin alami yang sangat menghargai tradisi, kerja keras, dan selalu memastikan segala sesuatunya berjalan lancar. Kamu tidak banyak terpengaruh oleh keraguan diri, karena kamu tahu bagaimana mencapai tujuan!
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat terorganisir, bertanggung jawab, efisien, logis, dan tegas. Kamu adalah pemimpin yang hebat dan mampu menjalankan proyek dengan sukses.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Terkadang kamu cenderung kaku atau kurang fleksibel terhadap perubahan. Ada kalanya kamu bisa terlalu fokus pada aturan atau mengabaikan perasaan orang lain. Cobalah untuk sedikit lebih adaptif dan peka, ya!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu langsung dan lugas, sangat menghargai kejujuran dan efisiensi dalam komunikasi. Kamu adalah pemimpin kelompok yang alami dan sering menjadi penentu arah.
+
+                <strong>Caramu Bekerja:</strong> Kamu sangat berorientasi pada hasil dan efisiensi. Kamu akan unggul dalam peran manajemen, di mana kamu dapat mengatur dan memimpin tim untuk mencapai tujuan dengan sempurna.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu konsisten dan bisa diandalkan, selalu menciptakan lingkungan yang stabil dan teratur. Kamu menemukan kepuasan sejati dalam struktur dan dalam memenuhi semua tanggung jawabmu. Kamu adalah arsitek dari ketertiban dalam hidupmu!`,
             },
             ESTJ_T: {
-                name: 'The Turbulent Executive',
-                description: `<strong>Gambaran Umum:</strong> ESTJ-T adalah individu yang teratur, efisien, dan praktis, namun lebih peka terhadap kritik dan cenderung lebih cemas tentang kinerja atau kepemimpinan mereka. Mereka ingin mencapai tujuan tetapi mungkin berjuang dengan keraguan diri.
-                <strong>Kekuatan:</strong> Sangat terorganisir dan memiliki dorongan yang kuat untuk mencapai kesempurnaan. Mereka sangat teliti dalam pekerjaan dan memimpin dengan contoh.
-                <strong>Area Pengembangan:</strong> Cenderung terlalu kritis terhadap diri sendiri, mudah stres, dan mungkin membutuhkan lebih banyak validasi eksternal. Mereka bisa terjebak dalam detail dan takut membuat kesalahan.
-                <strong>Interaksi Sosial:</strong> Bisa lebih tertutup atau berhati-hati karena kekhawatiran akan penilaian. Mereka mencari pengakuan atas kepemimpinan mereka.
-                <strong>Gaya Kerja:</strong> Berdedikasi dan perfeksionis, memastikan semua tugas dilakukan dengan benar. Mereka mungkin merasa terbebani oleh tekanan dan takut gagal.
-                <strong>Kehidupan Pribadi:</strong> Berusaha menciptakan stabilitas dan keteraturan, tetapi berjuang dengan kecemasan internal tentang apakah mereka telah melakukan cukup atau apakah mereka memenuhi standar tinggi mereka sendiri.`,
+                name: 'Sang Eksekutif yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah ESTJ-T, si Eksekutif yang Bergejolak. Kamu adalah individu yang teratur, efisien, dan praktis, sama seperti ESTJ lainnya. Namun, kamu lebih peka terhadap kritik dan cenderung lebih cemas tentang kinerja atau kepemimpinanmu. Kamu ingin mencapai tujuan, tetapi mungkin berjuang dengan keraguan diri dan kekhawatiran internal.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat terorganisir dan punya dorongan kuat untuk mencapai kesempurnaan. Kamu sangat teliti dalam pekerjaanmu dan memimpin dengan contoh yang kuat.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Kamu cenderung terlalu kritis terhadap diri sendiri dan mudah merasa stres. Kamu mungkin membutuhkan lebih banyak validasi eksternal, dan bisa terjebak dalam detail atau takut membuat kesalahan. Ingat, proses adalah bagian dari kesuksesan!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu bisa lebih tertutup atau berhati-hati karena kekhawatiran akan penilaian. Kamu sangat mencari pengakuan atas kepemimpinanmu.
+
+                <strong>Caramu Bekerja:</strong> Kamu berdedikasi dan perfeksionis, selalu memastikan semua tugas dilakukan dengan benar. Namun, kamu mungkin merasa terbebani oleh tekanan dan takut gagal.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu berusaha menciptakan stabilitas dan keteraturan, tetapi berjuang dengan kecemasan internal tentang apakah kamu sudah melakukan cukup atau apakah kamu memenuhi standar tinggi yang kamu tetapkan untuk diri sendiri. Kamu adalah pemimpin yang kuat, tapi jangan lupa untuk bersantai!`,
             },
             // ---- ESFJ Variants ----
             ESFJ_A: {
-                name: 'The Assertive Consul',
-                description: `<strong>Gambaran Umum:</strong> ESFJ-A adalah individu yang peduli, sosial, dan kooperatif dengan rasa percaya diri yang tinggi. Mereka sangat ramah, ingin membantu orang lain, dan berfokus pada menjaga harmoni sosial, tanpa banyak terpengaruh oleh keraguan diri.
-                <strong>Kekuatan:</strong> Sangat sosial, peduli, terorganisir, praktis, dan mendukung. Mereka adalah tulang punggung komunitas dan keluarga.
-                <strong>Area Pengembangan:</strong> Cenderung terlalu memprioritaskan kebutuhan orang lain di atas kebutuhan sendiri, sulit menolak permintaan, dan bisa terlalu sensitif terhadap konflik.
-                <strong>Interaksi Sosial:</strong> Sangat ramah dan populer, mereka menikmati berada di sekitar orang lain dan memastikan semua orang merasa nyaman. Mereka adalah tuan rumah yang hebat.
-                <strong>Gaya Kerja:</strong> Unggul dalam peran yang membutuhkan interaksi dengan orang banyak dan layanan. Mereka adalah pemain tim yang hebat dan memastikan semua orang merasa disertakan.
-                <strong>Kehidupan Pribadi:</strong> Berfokus pada keluarga, teman, dan komunitas. Mereka menemukan kepuasan dalam membantu orang lain dan menciptakan lingkungan yang harmonis dan mendukung.`,
+                name: 'Sang Konsul yang Tegas',
+                description: `Selamat [NamaPengguna]! Kamu adalah seorang ESFJ-A, sang Konsul yang Tegas. Kamu adalah individu yang peduli, sosial, dan kooperatif, dengan rasa percaya diri yang tinggi. Kamu sangat ramah, selalu ingin membantu orang lain, dan fokus pada menjaga harmoni sosial. Kamu tidak banyak terpengaruh oleh keraguan diri, karena kamu adalah pilar komunitas yang kuat!
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat sosial, peduli, terorganisir, praktis, dan sangat mendukung. Kamu adalah tulang punggung komunitas dan keluarga, yang selalu siap membantu.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Terkadang kamu cenderung terlalu memprioritaskan kebutuhan orang lain di atas kebutuhanmu sendiri, yang membuatmu sulit menolak permintaan. Kamu juga bisa terlalu sensitif terhadap konflik. Ingat, penting juga untuk menjaga dirimu sendiri!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu sangat ramah dan populer, selalu menikmati berada di sekitar orang lain dan memastikan semua orang merasa nyaman. Kamu adalah tuan rumah yang hebat dan selalu bisa membuat suasana jadi menyenangkan.
+
+                <strong>Caramu Bekerja:</strong> Kamu akan unggul dalam peran yang membutuhkan interaksi dengan banyak orang dan pelayanan. Kamu adalah pemain tim yang hebat dan selalu memastikan semua orang merasa disertakan dan dihargai.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu berfokus pada keluarga, teman, dan komunitas. Kamu menemukan kepuasan sejati dalam membantu orang lain dan menciptakan lingkungan yang harmonis dan mendukung. Kehadiranmu membawa kehangatan dan kebahagiaan!`,
             },
             ESFJ_T: {
-                name: 'The Turbulent Consul',
-                description: `<strong>Gambaran Umum:</strong> ESFJ-T adalah individu yang peduli, sosial, dan kooperatif, namun lebih peka terhadap kritik dan cenderung lebih cemas tentang bagaimana mereka dipersepsikan oleh orang lain. Mereka ingin membantu tetapi mungkin berjuang dengan keraguan diri.
-                <strong>Kekuatan:</strong> Sangat berempati, peduli, dan responsif terhadap kebutuhan orang lain. Mereka memiliki dorongan yang kuat untuk perbaikan diri dan menjaga harmoni.
-                <strong>Area Pengembangan:</strong> Mudah merasa bersalah, cenderung terlalu menganalisis situasi sosial, dan mungkin membutuhkan lebih banyak validasi. Mereka bisa rentan terhadap stres.
-                <strong>Interaksi Sosial:</strong> Sangat perhatian terhadap perasaan orang lain dan berusaha untuk disukai. Mereka mungkin ragu untuk mengungkapkan kebutuhan mereka sendiri karena takut menyebabkan ketidakharmonisan.
-                <strong>Gaya Kerja:</strong> Berdedikasi dan teliti, memastikan semua tugas dilakukan dengan benar untuk mendukung orang lain. Mereka mungkin merasa terbebani oleh tekanan dan takut mengecewakan.
-                <strong>Kehidupan Pribadi:</strong> Berusaha menciptakan harmoni dan dukungan, tetapi mungkin berjuang dengan kecemasan internal tentang apakah mereka telah melakukan cukup atau apakah mereka cukup disukai. Mereka mencari jaminan dan penerimaan.`,
+                name: 'Sang Konsul yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah ESFJ-T, si Konsul yang Bergejolak. Kamu adalah individu yang peduli, sosial, dan kooperatif, sama seperti ESFJ lainnya. Namun, kamu lebih peka terhadap kritik dan cenderung lebih cemas tentang bagaimana kamu dipersepsikan oleh orang lain. Kamu ingin membantu, tetapi mungkin berjuang dengan keraguan diri dan kekhawatiran internal.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat berempati, peduli, dan responsif terhadap kebutuhan orang lain. Kamu punya dorongan kuat untuk terus memperbaiki diri dan menjaga harmoni.
+
+                <strong>Area untuk Terus Bertumbuh:</strong> Kamu mudah merasa bersalah, cenderung terlalu menganalisis situasi sosial, dan mungkin membutuhkan lebih banyak validasi. Kamu bisa rentan terhadap stres karena kekhawatiranmu. Ingat, kamu sudah melakukan yang terbaik!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu sangat perhatian terhadap perasaan orang lain dan berusaha keras untuk disukai. Kamu mungkin ragu untuk mengungkapkan kebutuhanmu sendiri karena takut menyebabkan ketidakharmonisan.
+
+                <strong>Caramu Bekerja:</strong> Kamu berdedikasi dan teliti, selalu memastikan semua tugas dilakukan dengan benar untuk mendukung orang lain. Namun, kamu mungkin merasa terbebani oleh tekanan dan takut mengecewakan.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu berusaha menciptakan harmoni dan dukungan bagi orang-orang terdekatmu, tetapi mungkin berjuang dengan kecemasan internal tentang apakah kamu sudah melakukan cukup atau apakah kamu sudah cukup disukai. Kamu mencari jaminan dan penerimaan, dan itu wajar kok. Tetaplah jadi pribadi yang peduli!`,
             },
             // ---- ENFJ Variants ----
             ENFJ_A: {
-                name: 'The Assertive Protagonist',
-                description: `<strong>Gambaran Umum:</strong> ENFJ-A adalah individu yang inspiratif, karismatik, dan altruistik dengan rasa percaya diri yang tinggi. Mereka adalah pemimpin yang lahir untuk memotivasi orang lain dan berjuang untuk kebaikan yang lebih besar, tanpa banyak terpengaruh oleh keraguan diri.
-                <strong>Kekuatan:</strong> Sangat karismatik, berempati, visioner, persuasif, dan komunikator yang hebat. Mereka menginspirasi dan memimpin dengan contoh.
-                <strong>Area Pengembangan:</strong> Cenderung terlalu idealis, bisa mengabaikan kebutuhan diri sendiri demi orang lain, dan terkadang terlalu mengatur.
-                <strong>Interaksi Sosial:</strong> Sangat ramah, mudah bergaul, dan menarik. Mereka menikmati berinteraksi dengan orang lain dan memiliki bakat untuk menyatukan kelompok.
-                <strong>Gaya Kerja:</strong> Unggul dalam peran kepemimpinan, di mana mereka dapat menginspirasi dan memotivasi tim. Mereka adalah fasilitator dan mentor yang hebat.
-                <strong>Kehidupan Pribadi:</strong> Berfokus pada pertumbuhan pribadi dan membantu orang lain mencapai potensi mereka. Mereka menemukan kepuasan dalam menciptakan perubahan positif di dunia dan mendukung orang yang mereka cintai.`,
+                name: 'Sang Protagonis yang Tegas',
+                description: `Selamat [NamaPengguna]! Kamu adalah seorang ENFJ-A, sang Protagonis yang Tegas. Kamu adalah individu yang inspiratif, karismatik, dan altruistik, dengan rasa percaya diri yang tinggi. Kamu adalah pemimpin yang lahir untuk memotivasi orang lain dan berjuang untuk kebaikan yang lebih besar di dunia ini. Kamu tidak banyak terpengaruh oleh keraguan diri, karena kamu punya visi yang jelas!
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat karismatik, berempati, visioner, persuasif, dan komunikator yang hebat. Kamu punya kemampuan luar biasa untuk menginspirasi dan memimpin dengan contoh.
+
+                <strong>Area Pengembangan:</strong> Cenderung terlalu idealis atau bisa mengabaikan kebutuhan dirimu sendiri demi orang lain. Terkadang kamu mungkin terlalu mengatur. Ingat, keseimbangan itu penting!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu sangat ramah, mudah bergaul, dan menarik. Kamu menikmati berinteraksi dengan orang lain dan memiliki bakat alami untuk menyatukan kelompok.
+
+                <strong>Caramu Bekerja:</strong> Kamu akan unggul dalam peran kepemimpinan, di mana kamu dapat menginspirasi dan memotivasi tim. Kamu adalah fasilitator dan mentor yang hebat, selalu mendorong orang lain untuk berkembang.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu berfokus pada pertumbuhan pribadi dan membantu orang lain mencapai potensi penuh mereka. Kamu menemukan kepuasan sejati dalam menciptakan perubahan positif di dunia ini dan mendukung orang-orang yang kamu cintai. Teruslah jadi inspirasi, sang Protagonis!`,
             },
             ENFJ_T: {
-                name: 'The Turbulent Protagonist',
-                description: `<strong>Gambaran Umum:</strong> ENFJ-T adalah individu yang inspiratif, karismatik, dan altruistik, namun lebih peka terhadap kritik dan cenderung lebih cemas tentang apakah mereka memenuhi harapan orang lain. Mereka ingin memimpin tetapi mungkin berjuang dengan keraguan diri.
-                <strong>Kekuatan:</strong> Sangat berempati, berwawasan luas, dan didorong oleh keinginan kuat untuk kebaikan. Mereka memiliki dorongan besar untuk perbaikan diri dan sangat responsif terhadap kebutuhan orang lain.
-                <strong>Area Pengembangan:</strong> Mudah merasa stres, rentan terhadap kritik, dan bisa menjadi terlalu keras pada diri sendiri. Mereka mungkin kesulitan membuat keputusan karena takut membuat kesalahan.
-                <strong>Interaksi Sosial:</strong> Sangat perhatian terhadap perasaan orang lain dan berusaha menghindari konflik. Mereka mungkin membutuhkan jaminan dan dukungan lebih sering.
-                <strong>Gaya Kerja:</strong> Berdedikasi dan etis, bekerja dengan hati dan pikiran. Mereka mungkin mengalami tekanan batin yang signifikan untuk mencapai kesempurnaan dalam pekerjaan mereka dan memenuhi standar tinggi.
-                <strong>Kehidupan Pribadi:</strong> Sangat introspektif dan mencari makna yang mendalam. Mereka berjuang dengan kecemasan internal untuk memenuhi standar tinggi mereka sendiri dan ingin memastikan tindakan mereka selaras dengan nilai-nilai mereka.`,
+                name: 'Sang Protagonis yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah ENFJ-T, si Protagonis yang Bergejolak. Kamu adalah individu yang inspiratif, karismatik, dan altruistik, sama seperti ENFJ lainnya. Namun, kamu lebih peka terhadap kritik dan cenderung lebih cemas tentang apakah kamu memenuhi harapan orang lain. Kamu ingin memimpin, tetapi mungkin berjuang dengan keraguan diri dan kekhawatiran yang mendalam.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat berempati, punya wawasan luas, dan didorong oleh keinginan kuat untuk kebaikan. Kamu punya dorongan besar untuk terus memperbaiki diri dan sangat responsif terhadap kebutuhan orang lain.
+
+                <strong>Area Pengembangan:</strong> Kamu mudah merasa stres dan rentan terhadap kritik. Kamu bisa menjadi terlalu keras pada diri sendiri dan mungkin kesulitan membuat keputusan karena takut membuat kesalahan. Ingat, kamu sudah berjuang!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu sangat perhatian terhadap perasaan orang lain dan berusaha keras menghindari konflik. Kamu mungkin membutuhkan jaminan dan dukungan lebih sering, karena kamu cenderung memikirkan banyak hal.
+
+                <strong>Caramu Bekerja:</strong> Kamu berdedikasi dan etis, bekerja dengan hati dan pikiranmu. Namun, kamu mungkin mengalami tekanan batin yang signifikan untuk mencapai kesempurnaan dalam pekerjaanmu dan memenuhi standar tinggi.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu sangat introspektif dan selalu mencari makna yang mendalam dalam hidup. Kamu berjuang dengan kecemasan internal untuk memenuhi standar tinggi yang kamu tetapkan untuk diri sendiri, dan ingin memastikan semua tindakanmu selaras dengan nilai-nilai luhurmu. Kamu adalah pemimpin yang peduli, jangan ragu pada dirimu!`,
             },
             // ---- ENTJ Variants ----
             ENTJ_A: {
-                name: 'The Assertive Commander',
-                description: `<strong>Gambaran Umum:</strong> ENTJ-A adalah individu yang berani, terorganisir, dan tegas dengan rasa percaya diri yang tinggi. Mereka adalah pemimpin alami yang melihat gambaran besar dan mampu merencanakan serta melaksanakan tujuan kompleks, tanpa banyak terpengaruh keraguan diri.
-                <strong>Kekuatan:</strong> Sangat visioner, strategis, logis, tegas, dan efisien. Mereka adalah pemimpin yang dilahirkan dan mampu memotivasi orang lain untuk mencapai tujuan besar.
-                <strong>Area Pengembangan:</strong> Cenderung dominan, kurang peka terhadap emosi, dan bisa terlihat dingin atau tidak sabar.
-                <strong>Interaksi Sosial:</strong> Karismatik dan persuasif, mereka menikmati diskusi yang merangsang dan memimpin percakapan. Mereka mencari orang-orang yang dapat menantang mereka secara intelektual.
-                <strong>Gaya Kerja:</strong> Pemikir strategis yang unggul dalam perencanaan dan implementasi. Mereka adalah manajer dan pemimpin proyek yang efektif, selalu mencari cara untuk meningkatkan efisiensi.
-                <strong>Kehidupan Pribadi:</strong> Berfokus pada pencapaian dan pertumbuhan. Mereka selalu mencari tantangan baru dan cara untuk memperluas pengaruh mereka, didorong oleh keinginan untuk menguasai dan mencapai tujuan.`,
+                name: 'Sang Komandan yang Tegas',
+                description: `Selamat [NamaPengguna]! Kamu adalah seorang ENTJ-A, sang Komandan yang Tegas. Kamu adalah individu yang berani, terorganisir, dan tegas, dengan rasa percaya diri yang tinggi. Kamu adalah pemimpin alami yang mampu melihat gambaran besar dan merencanakan serta melaksanakan tujuan kompleks dengan sangat efektif. Kamu tidak banyak terpengaruh keraguan diri, karena kamu tahu persis apa yang harus dilakukan!
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat visioner, strategis, logis, tegas, dan efisien. Kamu adalah pemimpin yang dilahirkan, dengan kemampuan luar biasa untuk memotivasi orang lain mencapai tujuan besar.
+
+                <strong>Area Pengembangan:</strong> Terkadang kamu cenderung dominan atau kurang peka terhadap emosi orang lain. Kamu bisa terlihat dingin atau tidak sabar. Ingat, kepemimpinan juga butuh empati!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu karismatik dan persuasif, sangat menikmati diskusi yang merangsang dan selalu memimpin percakapan. Kamu mencari orang-orang yang dapat menantangmu secara intelektual.
+
+                <strong>Caramu Bekerja:</strong> Kamu adalah pemikir strategis yang unggul dalam perencanaan dan implementasi. Kamu adalah manajer dan pemimpin proyek yang efektif, selalu mencari cara untuk meningkatkan efisiensi dan mencapai hasil maksimal.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu berfokus pada pencapaian dan pertumbuhan. Kamu selalu mencari tantangan baru dan cara untuk memperluas pengaruhmu, didorong oleh keinginan kuat untuk menguasai dan mencapai tujuan. Kamu adalah pembangun kerajaan impianmu!`,
             },
             ENTJ_T: {
-                name: 'The Turbulent Commander',
-                description: `<strong>Gambaran Umum:</strong> ENTJ-T adalah individu yang berani, terorganisir, dan tegas, namun lebih peka terhadap kritik dan cenderung lebih cemas tentang kepemimpinan atau kemampuan mereka. Mereka ingin memimpin tetapi mungkin berjuang dengan keraguan diri.
-                <strong>Kekuatan:</strong> Sangat strategis dan memiliki dorongan yang kuat untuk mencapai kesempurnaan. Mereka sangat teliti dalam perencanaan dan memimpin dengan contoh.
-                <strong>Area Pengembangan:</strong> Cenderung terlalu kritis terhadap diri sendiri, mudah stres, dan mungkin membutuhkan lebih banyak validasi eksternal. Mereka bisa terjebak dalam analisis berlebihan dan takut membuat kesalahan.
-                <strong>Interaksi Sosial:</strong> Mungkin lebih menarik diri atau berhati-hati karena kekhawatiran akan penilaian. Mereka mencari pengakuan atas kepemimpinan mereka.
-                <strong>Gaya Kerja:</strong> Berdedikasi dan perfeksionis, memastikan semua tugas dilakukan dengan benar. Mereka mungkin merasa terbebani oleh tekanan dan takut gagal.
-                <strong>Kehidupan Pribadi:</strong> Berusaha menciptakan stabilitas dan keteraturan, tetapi berjuang dengan kecemasan internal tentang apakah mereka telah melakukan cukup atau apakah mereka memenuhi standar tinggi mereka sendiri.`,
+                name: 'Sang Komandan yang Bergejolak',
+                description: `Hai [NamaPengguna]! Hasilmu adalah ENTJ-T, si Komandan yang Bergejolak. Kamu adalah individu yang berani, terorganisir, dan tegas, sama seperti ENTJ lainnya. Namun, kamu lebih peka terhadap kritik dan cenderung lebih cemas tentang kepemimpinan atau kemampuanmu. Kamu ingin memimpin, tetapi mungkin berjuang dengan keraguan diri dan kekhawatiran yang mendalam.
+
+                <strong>Kekuatanmu yang Bersinar:</strong> Kamu sangat strategis dan punya dorongan kuat untuk mencapai kesempurnaan. Kamu sangat teliti dalam perencanaanmu dan memimpin dengan contoh yang menginspirasi.
+
+                <strong>Area Pengembangan:</strong> Kamu cenderung terlalu kritis terhadap diri sendiri dan mudah merasa stres. Kamu mungkin membutuhkan lebih banyak validasi eksternal, dan bisa terjebak dalam analisis berlebihan atau takut membuat kesalahan. Ingat, kamu sudah sangat kompeten!
+
+                <strong>Gayamu dalam Berinteraksi Sosial:</strong> Kamu mungkin lebih menarik diri atau berhati-hati karena kekhawatiran akan penilaian. Kamu sangat mencari pengakuan atas kepemimpinanmu.
+
+                <strong>Caramu Bekerja:</strong> Kamu berdedikasi dan perfeksionis, selalu memastikan semua tugas dilakukan dengan benar. Namun, kamu mungkin merasa terbebani oleh tekanan dan takut gagal.
+
+                <strong>Kehidupan Pribadimu:</strong> Kamu berusaha menciptakan stabilitas dan keteraturan, tetapi berjuang dengan kecemasan internal tentang apakah kamu sudah melakukan cukup atau apakah kamu memenuhi standar tinggi yang kamu tetapkan untuk diri sendiri. Kamu adalah pemimpin yang hebat, tapi jangan lupa untuk menghargai dirimu sendiri!`,
             },
         };
 
@@ -719,6 +960,7 @@
             mbtiTypeResult = '';
             currentQuestionIndex = 0;
             shuffledQuestions = []; // Hapus pertanyaan yang diacak untuk memastikan pengacakan baru
+            userName = ''; // Reset nama pengguna
             renderApp(); // Render ulang aplikasi untuk kembali ke layar selamat datang
         }
 
@@ -731,13 +973,17 @@
 
             if (currentStage === 'welcome') {
                 htmlContent = `
-                    <div class="text-center p-8 md:p-12 bg-white rounded-2xl shadow-custom-xl border border-gray-100 transform transition-transform duration-500 ease-in-out scale-95 hover:scale-100">
+                    <div class="text-center p-8 md:p-12 bg-white rounded-2xl shadow-custom-xl border border-blue-100 transform transition-transform duration-500 ease-in-out scale-95 hover:scale-100">
                         <h1 class="text-3xl md:text-5xl font-extrabold mb-4 text-gray-800 tracking-tight">Tes Kepribadian MBTI</h1>
-                        <p class="text-lg md:text-xl text-gray-600 mb-8 leading-relaxed">
+                        <p class="text-lg md:text-xl text-gray-600 mb-6 leading-relaxed">
                             Jelajahi preferensi kepribadian Anda dengan menjawab serangkaian pertanyaan sederhana.
                             Tes ini dirancang sebagai alat refleksi diri dan bukan pengganti penilaian profesional
                             dari Myers-Briggs Foundation. Jawablah dengan jujur untuk hasil yang paling akurat menurut Anda.
                         </p>
+                        <div class="mb-6">
+                            <input type="text" id="userNameInput" placeholder="Masukkan namamu di sini..."
+                                class="w-full max-w-sm px-4 py-3 rounded-lg border-2 border-blue-300 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent text-lg text-center shadow-sm" />
+                        </div>
                         <button id="startButton" class="btn-primary px-8 py-4 text-white font-semibold rounded-full shadow-lg-custom hover:shadow-xl transition-all duration-300 transform hover:scale-105">
                             Mulai Tes Sekarang!
                         </button>
@@ -746,6 +992,11 @@
                 appRoot.innerHTML = htmlContent;
                 // Tambahkan event listener setelah elemen dirender
                 document.getElementById('startButton').onclick = () => {
+                    const nameInput = document.getElementById('userNameInput');
+                    userName = nameInput.value.trim(); // Simpan nama pengguna
+                    if (userName === '') {
+                        userName = 'Teman'; // Nama default jika kosong
+                    }
                     currentStage = 'test';
                     // Acak pertanyaan hanya saat memulai tes
                     shuffledQuestions = [...allQuestions]; // Buat salinan
@@ -767,17 +1018,17 @@
                 const progress = ((currentQuestionIndex + 1) / shuffledQuestions.length) * 100;
 
                 let optionsHtml = '';
-                likertOptions.forEach((option, index) => {
+                likertOptions.forEach((option) => {
                     optionsHtml += `
                         <button class="option-button w-full px-5 py-3 rounded-xl cursor-pointer text-gray-800 font-medium"
                                 onclick="handleAnswer(${option.score})">
-                            ${option.text}
+                            <span>${option.text}</span>
                         </button>
                     `;
                 });
 
                 htmlContent = `
-                    <div class="w-full max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-custom-xl border border-gray-100">
+                    <div class="w-full max-w-xl mx-auto bg-white p-8 rounded-2xl shadow-custom-xl border border-blue-100">
                         <p class="text-sm text-gray-500 mb-2 font-medium">
                             Pertanyaan ${currentQuestionIndex + 1} dari ${shuffledQuestions.length}
                         </p>
@@ -795,13 +1046,19 @@
                 `;
                 appRoot.innerHTML = htmlContent;
             } else if (currentStage === 'results') {
-                const description = mbtiDescriptions[mbtiTypeResult] || {
+                let description = mbtiDescriptions[mbtiTypeResult] || {
                     name: 'Tipe Tidak Ditemukan',
                     description: 'Maaf, deskripsi untuk tipe ini belum tersedia. Silakan coba lagi atau mungkin ada masalah dengan perhitungan skor.'
                 };
 
+                // Ganti placeholder [NamaPengguna] dengan nama yang dimasukkan
+                description = {
+                    ...description,
+                    description: description.description.replace(/\[NamaPengguna\]/g, userName)
+                };
+
                 htmlContent = `
-                    <div class="w-full max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-custom-xl border border-gray-100 text-center">
+                    <div class="w-full max-w-2xl mx-auto bg-white p-8 rounded-2xl shadow-custom-xl border border-blue-100 text-center">
                         <h2 class="text-2xl md:text-4xl font-extrabold mb-4 text-gray-800">
                             Hasil Tes Kepribadian Anda:
                         </h2>
@@ -815,7 +1072,7 @@
                             ${description.description}
                         </div>
 
-                        <div class="mt-8 mb-6 p-6 bg-blue-50 rounded-xl border border-blue-200 text-left shadow-inner">
+                        <div class="mt-8 mb-6 p-6 bg-blue-50 rounded-xl border border-blue-200 text-left shadow-inner preference-summary">
                             <h4 class="text-lg font-semibold text-blue-800 mb-4">Kekuatan Preferensi Anda:</h4>
                             <ul class="text-blue-700 space-y-3">
                                 <li>
