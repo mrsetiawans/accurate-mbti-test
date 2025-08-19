@@ -1,220 +1,159 @@
-/* Mengatur font-family global untuk body */
+/* Global Styles & New Design */
+
 body {
     font-family: 'Inter', sans-serif;
-    /* Tambahkan background gradient yang lebih dinamis dan modern */
-    background: linear-gradient(to right bottom, #e0f2fe, #bfdbfe, #93c5fd, #60a5fa, #3b82f6); /* Warna biru muda yang cerah dan profesional */
-    min-height: 100vh; /* Pastikan background mengisi seluruh viewport */
-    display: flex; /* Gunakan flexbox untuk centering konten */
-    align-items: center; /* Vertikal center */
-    justify-content: center; /* Horizontal center */
-    padding: 1.5rem; /* Tambahkan padding agar konten tidak terlalu mepet ke tepi layar */
-    color: #374151; /* Warna teks default agar lebih gelap dan terbaca */
+    background-color: #f1f5f9; /* slate-100 */
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    color: #0f172a; /* slate-900 */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
-/* Keyframe animation untuk efek memantul yang lebih halus pada hasil tipe MBTI */
-.animate-subtle-pulse {
-    animation: subtle-pulse 2.5s infinite ease-in-out;
+
+/* Typography */
+h1 {
+    font-size: 3rem;   /* text-5xl */
+    font-weight: 800; /* extrabold */
+    margin-bottom: 1rem;
+    color: #1e293b; /* slate-800 */
+    letter-spacing: -0.025em;
 }
-@keyframes subtle-pulse {
-    0%, 100% {
-        transform: scale(1);
-    }
-    50% {
-        transform: scale(1.03);
-    }
+
+h2 {
+    font-size: 1.875rem; /* text-3xl */
+    font-weight: 700;  /* bold */
+    margin-bottom: 2rem;
+    color: #1e293b;
 }
-/* Mengatur agar teks di dalam deskripsi dapat mempertahankan spasi dan baris baru */
-.whitespace-pre-wrap {
-    white-space: pre-wrap;
+
+p {
+    color: #475569; /* slate-600 */
+    line-height: 1.7;
 }
-/* Meningkatkan tampilan bayangan pada kartu utama untuk efek kedalaman yang elegan */
-.shadow-custom-lg {
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08), 0 6px 6px rgba(0, 0, 0, 0.1);
-}
-.shadow-custom-xl {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 12px 12px rgba(0, 0, 0, 0.1);
-}
-/* Efek hover yang lebih atraktif untuk tombol utama */
+
+/* Main Button */
 .btn-primary {
-    background: linear-gradient(to right, #2563eb, #3b82f6); /* Gradien warna biru yang kuat */
-    border: none;
-    transition: all 0.3s ease-in-out; /* Transisi yang lebih halus */
-}
-.btn-primary:hover {
-    transform: translateY(-3px); /* Sedikit lebih naik */
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); /* Bayangan lebih dalam */
-    background: linear-gradient(to right, #1d4ed8, #2563eb); /* Gradien lebih gelap saat hover */
-}
-.btn-primary:active {
-    transform: translateY(-1px); /* Sedikit menekan saat klik */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-/* Styling untuk tombol opsi jawaban agar lebih modern dan interaktif */
-.option-button {
-    transition: all 0.25s ease-in-out;
-    background-color: #ffffff; /* Latar belakang putih bersih */
-    border: 1px solid #e2e8f0; /* Border abu-abu terang */
-    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.07); /* Bayangan lembut yang lebih terasa */
-    text-align: left; /* Teks rata kiri */
-    color: #4a5568; /* Warna teks yang lebih gelap */
-    position: relative; /* Untuk ikon */
-    overflow: hidden; /* Pastikan tidak ada overflow dari efek hover */
-}
-.option-button::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to right, transparent, rgba(96, 165, 250, 0.2), transparent);
-    transition: all 0.4s ease-in-out;
-    z-index: 0;
-}
-.option-button:hover::before {
-    left: 100%;
-}
-.option-button:hover {
-    background-color: #eff6ff; /* Biru sangat muda saat hover */
-    border-color: #60a5fa; /* Biru terang untuk border */
-    transform: translateY(-4px); /* Efek angkat yang lebih terasa */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12); /* Bayangan lebih kuat saat hover */
-    color: #2563eb; /* Warna teks biru tua */
-}
-.option-button:active {
-    transform: translateY(-2px); /* Sedikit menekan saat klik */
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
-    background-color: #dbeafe; /* Biru lebih gelap saat aktif */
-}
-.option-button span {
-    position: relative; /* Agar teks di atas pseudo-element */
-    z-index: 1;
-}
-
-/* Styling untuk teks deskripsi hasil agar lebih rapi */
-.description-content strong {
-    display: block; /* Membuat judul sub-bagian menjadi block level */
-    margin-top: 2rem; /* Spasi di atas judul sub-bagian */
-    margin-bottom: 0.8rem; /* Spasi di bawah judul sub-bagian */
-    font-size: 1.5rem; /* Ukuran font lebih besar untuk sub-judul */
-    color: #1f2937; /* Warna teks yang lebih gelap */
-    position: relative; /* Untuk underline */
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid #a8dadc; /* Underline yang lebih menarik */
-    font-weight: 700; /* Lebih tebal */
-}
-.description-content strong::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: -2px; /* Menyesuaikan posisi di bawah border */
-    width: 70px; /* Lebar underline yang lebih panjang */
-    height: 4px; /* Ketebalan underline */
-    background-color: #3b82f6; /* Warna underline yang serasi dengan tema */
-    border-radius: 2px;
-    z-index: 2; /* Pastikan di atas border-bottom */
-}
-.description-content {
-    line-height: 1.9; /* Meningkatkan jarak antar baris untuk keterbacaan yang optimal */
-    text-align: justify; /* Ratakan teks agar terlihat lebih rapi */
-    color: #4a5568; /* Warna teks yang sedikit lebih gelap */
-    font-size: 1.1rem; /* Ukuran font sedikit lebih besar */
-}
-
-/* Styling untuk container hasil preferensi */
-.preference-summary {
-    border-left: 5px solid #2563eb; /* Garis biru di samping */
-    padding-left: 1.5rem;
-}
-.preference-summary li {
-    margin-bottom: 0.75rem;
-}
-.preference-summary strong {
-    font-weight: 600;
-}
-.preference-summary span {
+    background-color: #4f46e5; /* indigo-600 */
+    color: white;
     font-weight: 700;
-    color: #1e40af; /* Biru yang lebih tua */
-}
-.preference-summary em {
-    color: #6b7280;
-    font-size: 0.9rem;
+    padding: 1rem 2.5rem;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    transition: all 0.2s ease-in-out;
 }
 
-/* Responsive adjustments */
+.btn-primary:hover {
+    background-color: #4338ca; /* indigo-700 */
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+
+/* Option Buttons for Questions */
+.option-button {
+    background-color: white;
+    border: 1px solid #cbd5e1; /* slate-300 */
+    color: #334155; /* slate-700 */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
+    text-align: center;
+}
+
+.option-button:hover {
+    border-color: #4f46e5; /* indigo-600 */
+    color: #4f46e5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+.option-button:active {
+    transform: translateY(0);
+}
+
+/* Input Field */
+#userNameInput {
+    border: 1px solid #cbd5e1; /* slate-300 */
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    transition: all 0.2s ease-in-out;
+}
+
+#userNameInput:focus {
+    border-color: #4f46e5;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.3);
+    outline: none;
+}
+
+/* Results Page Specifics */
+.description-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    text-align: justify;
+}
+
+.description-content strong {
+    display: block;
+    font-size: 1.25rem; /* text-xl */
+    font-weight: 700;
+    color: #1e293b; /* slate-800 */
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.description-content strong:first-child {
+    margin-top: 0;
+}
+
+.preference-summary {
+    background-color: #eef2ff; /* indigo-50 */
+    border-left: 4px solid #4f46e5; /* indigo-600 */
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    margin-top: 2rem;
+}
+
+.preference-summary h4 {
+    color: #3730a3; /* indigo-800 */
+    font-weight: 700;
+}
+
+.preference-summary li {
+    color: #4338ca; /* indigo-700 */
+}
+
+/* Responsive Adjustments */
 @media (max-width: 768px) {
     body {
         padding: 1rem;
     }
-    .text-5xl {
-        font-size: 3.5rem; /* Menyesuaikan ukuran font untuk mobile */
+    h1 {
+        font-size: 2.25rem; /* text-4xl */
     }
-    .text-7xl {
-        font-size: 4.5rem; /* Menyesuaikan ukuran font untuk mobile hasil */
+    h2 {
+        font-size: 1.5rem; /* text-2xl */
     }
-    .text-3xl {
-        font-size: 2rem;
+    .result-type {
+        font-size: 4rem; /* text-7xl */
     }
-    .text-4xl {
-        font-size: 2.5rem;
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.875rem; /* text-3xl */
     }
-    .option-button {
-        padding: 0.8rem 1.25rem;
-        font-size: 1rem;
-    }
-    .description-content strong {
-        font-size: 1.3rem;
-        margin-top: 1.5rem;
-        padding-bottom: 0.5rem;
+    .result-type {
+        font-size: 3rem; /* text-5xl */
     }
     .description-content {
-        font-size: 1rem;
-        line-height: 1.7;
+        padding: 1.5rem;
     }
-}
-@media (max-width: 640px) {
-    .text-7xl {
-        font-size: 3.5rem;
-    }
-    .text-4xl {
-        font-size: 2rem;
-    }
-    .text-2xl {
-        font-size: 1.5rem;
-    }
-}
-
-/* Animation Keyframes */
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes fadeOut {
-    from { opacity: 1; }
-    to { opacity: 0; }
-}
-
-@keyframes slideUpFadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Animation Utility Classes */
-.anim-fade-in {
-    animation: fadeIn 0.5s ease-in-out forwards;
-}
-
-.anim-fade-out {
-    animation: fadeOut 0.3s ease-in-out forwards;
-}
-
-.anim-slide-up-fade-in {
-    animation: slideUpFadeIn 0.5s ease-out forwards;
 }
