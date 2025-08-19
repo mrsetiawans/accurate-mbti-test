@@ -1,0 +1,220 @@
+/* Mengatur font-family global untuk body */
+body {
+    font-family: 'Inter', sans-serif;
+    /* Tambahkan background gradient yang lebih dinamis dan modern */
+    background: linear-gradient(to right bottom, #e0f2fe, #bfdbfe, #93c5fd, #60a5fa, #3b82f6); /* Warna biru muda yang cerah dan profesional */
+    min-height: 100vh; /* Pastikan background mengisi seluruh viewport */
+    display: flex; /* Gunakan flexbox untuk centering konten */
+    align-items: center; /* Vertikal center */
+    justify-content: center; /* Horizontal center */
+    padding: 1.5rem; /* Tambahkan padding agar konten tidak terlalu mepet ke tepi layar */
+    color: #374151; /* Warna teks default agar lebih gelap dan terbaca */
+}
+/* Keyframe animation untuk efek memantul yang lebih halus pada hasil tipe MBTI */
+.animate-subtle-pulse {
+    animation: subtle-pulse 2.5s infinite ease-in-out;
+}
+@keyframes subtle-pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.03);
+    }
+}
+/* Mengatur agar teks di dalam deskripsi dapat mempertahankan spasi dan baris baru */
+.whitespace-pre-wrap {
+    white-space: pre-wrap;
+}
+/* Meningkatkan tampilan bayangan pada kartu utama untuk efek kedalaman yang elegan */
+.shadow-custom-lg {
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08), 0 6px 6px rgba(0, 0, 0, 0.1);
+}
+.shadow-custom-xl {
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15), 0 12px 12px rgba(0, 0, 0, 0.1);
+}
+/* Efek hover yang lebih atraktif untuk tombol utama */
+.btn-primary {
+    background: linear-gradient(to right, #2563eb, #3b82f6); /* Gradien warna biru yang kuat */
+    border: none;
+    transition: all 0.3s ease-in-out; /* Transisi yang lebih halus */
+}
+.btn-primary:hover {
+    transform: translateY(-3px); /* Sedikit lebih naik */
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3); /* Bayangan lebih dalam */
+    background: linear-gradient(to right, #1d4ed8, #2563eb); /* Gradien lebih gelap saat hover */
+}
+.btn-primary:active {
+    transform: translateY(-1px); /* Sedikit menekan saat klik */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Styling untuk tombol opsi jawaban agar lebih modern dan interaktif */
+.option-button {
+    transition: all 0.25s ease-in-out;
+    background-color: #ffffff; /* Latar belakang putih bersih */
+    border: 1px solid #e2e8f0; /* Border abu-abu terang */
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.07); /* Bayangan lembut yang lebih terasa */
+    text-align: left; /* Teks rata kiri */
+    color: #4a5568; /* Warna teks yang lebih gelap */
+    position: relative; /* Untuk ikon */
+    overflow: hidden; /* Pastikan tidak ada overflow dari efek hover */
+}
+.option-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, transparent, rgba(96, 165, 250, 0.2), transparent);
+    transition: all 0.4s ease-in-out;
+    z-index: 0;
+}
+.option-button:hover::before {
+    left: 100%;
+}
+.option-button:hover {
+    background-color: #eff6ff; /* Biru sangat muda saat hover */
+    border-color: #60a5fa; /* Biru terang untuk border */
+    transform: translateY(-4px); /* Efek angkat yang lebih terasa */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.12); /* Bayangan lebih kuat saat hover */
+    color: #2563eb; /* Warna teks biru tua */
+}
+.option-button:active {
+    transform: translateY(-2px); /* Sedikit menekan saat klik */
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+    background-color: #dbeafe; /* Biru lebih gelap saat aktif */
+}
+.option-button span {
+    position: relative; /* Agar teks di atas pseudo-element */
+    z-index: 1;
+}
+
+/* Styling untuk teks deskripsi hasil agar lebih rapi */
+.description-content strong {
+    display: block; /* Membuat judul sub-bagian menjadi block level */
+    margin-top: 2rem; /* Spasi di atas judul sub-bagian */
+    margin-bottom: 0.8rem; /* Spasi di bawah judul sub-bagian */
+    font-size: 1.5rem; /* Ukuran font lebih besar untuk sub-judul */
+    color: #1f2937; /* Warna teks yang lebih gelap */
+    position: relative; /* Untuk underline */
+    padding-bottom: 0.75rem;
+    border-bottom: 2px solid #a8dadc; /* Underline yang lebih menarik */
+    font-weight: 700; /* Lebih tebal */
+}
+.description-content strong::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px; /* Menyesuaikan posisi di bawah border */
+    width: 70px; /* Lebar underline yang lebih panjang */
+    height: 4px; /* Ketebalan underline */
+    background-color: #3b82f6; /* Warna underline yang serasi dengan tema */
+    border-radius: 2px;
+    z-index: 2; /* Pastikan di atas border-bottom */
+}
+.description-content {
+    line-height: 1.9; /* Meningkatkan jarak antar baris untuk keterbacaan yang optimal */
+    text-align: justify; /* Ratakan teks agar terlihat lebih rapi */
+    color: #4a5568; /* Warna teks yang sedikit lebih gelap */
+    font-size: 1.1rem; /* Ukuran font sedikit lebih besar */
+}
+
+/* Styling untuk container hasil preferensi */
+.preference-summary {
+    border-left: 5px solid #2563eb; /* Garis biru di samping */
+    padding-left: 1.5rem;
+}
+.preference-summary li {
+    margin-bottom: 0.75rem;
+}
+.preference-summary strong {
+    font-weight: 600;
+}
+.preference-summary span {
+    font-weight: 700;
+    color: #1e40af; /* Biru yang lebih tua */
+}
+.preference-summary em {
+    color: #6b7280;
+    font-size: 0.9rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 1rem;
+    }
+    .text-5xl {
+        font-size: 3.5rem; /* Menyesuaikan ukuran font untuk mobile */
+    }
+    .text-7xl {
+        font-size: 4.5rem; /* Menyesuaikan ukuran font untuk mobile hasil */
+    }
+    .text-3xl {
+        font-size: 2rem;
+    }
+    .text-4xl {
+        font-size: 2.5rem;
+    }
+    .option-button {
+        padding: 0.8rem 1.25rem;
+        font-size: 1rem;
+    }
+    .description-content strong {
+        font-size: 1.3rem;
+        margin-top: 1.5rem;
+        padding-bottom: 0.5rem;
+    }
+    .description-content {
+        font-size: 1rem;
+        line-height: 1.7;
+    }
+}
+@media (max-width: 640px) {
+    .text-7xl {
+        font-size: 3.5rem;
+    }
+    .text-4xl {
+        font-size: 2rem;
+    }
+    .text-2xl {
+        font-size: 1.5rem;
+    }
+}
+
+/* Animation Keyframes */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeOut {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+@keyframes slideUpFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animation Utility Classes */
+.anim-fade-in {
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+.anim-fade-out {
+    animation: fadeOut 0.3s ease-in-out forwards;
+}
+
+.anim-slide-up-fade-in {
+    animation: slideUpFadeIn 0.5s ease-out forwards;
+}
